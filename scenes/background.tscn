@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://77dsb0rj5sjq"]
+
+[ext_resource type="Texture2D" uid="uid://dcai6xn65xvul" path="res://assets/background/Textures-16.png" id="1_rxf5y"]
+
+[node name="background" type="Sprite2D"]
+texture_repeat = 2
+
+[node name="tile" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(8, 8)
+texture = ExtResource("1_rxf5y")
+frame = 4
+region_enabled = true
+region_rect = Rect2(48, 16, 16, 16)

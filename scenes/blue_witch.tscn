@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bukkocejlnpfb"]
+
+[ext_resource type="Texture2D" uid="uid://b4ot088uxdr51" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_idle.png" id="1_p1v3y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mf06q"]
+radius = 4.65382
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p1v3y")
+vframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 4)
+scale = Vector2(1.28926, 1.01755)
+shape = SubResource("CapsuleShape2D_mf06q")
