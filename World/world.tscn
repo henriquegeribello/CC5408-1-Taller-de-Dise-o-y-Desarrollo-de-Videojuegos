@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://qehda634lpl4" path="res://dirt_full_new.png" id="1_l10io"]
 [ext_resource type="PackedScene" uid="uid://do8oqsdg258a8" path="res://player.tscn" id="2_nbq3s"]
-[ext_resource type="Texture2D" uid="uid://cprm7pfy1asc1" path="res://icon.svg" id="3_ihvxp"]
+[ext_resource type="Texture2D" uid="uid://b4ot088uxdr51" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_idle.png" id="3_68vwv"]
 [ext_resource type="Script" path="res://World/Shadow.gd" id="3_lbua8"]
 [ext_resource type="PackedScene" uid="uid://dbsivqsvjeown" path="res://Enemy/enemy.tscn" id="3_u70ix"]
 
@@ -11,7 +11,7 @@
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
 texture_repeat = 2
-position = Vector2(-19, -106)
+position = Vector2(-21, -97)
 texture = ExtResource("1_l10io")
 region_enabled = true
 region_rect = Rect2(0, 0, 10000, 10000)
@@ -26,6 +26,7 @@ position = Vector2(142, 54)
 [node name="Shadow" type="Sprite2D" parent="." groups=["Shadow"]]
 modulate = Color(1, 0, 1, 1)
 position = Vector2(349, 230)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_ihvxp")
+scale = Vector2(2, 2)
+texture = ExtResource("3_68vwv")
+vframes = 6
 script = ExtResource("3_lbua8")
