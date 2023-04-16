@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4mto47fxynkn"]
+
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_uw26o"]
+[ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/theme.tres" id="2_dg3vl"]
+
+[node name="PauseMenu" type="MarginContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uw26o")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_dg3vl")
+theme_type_variation = &"BigLabel"
+text = "Pause"
+
+[node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_dg3vl")
+text = "Resume"
+
+[node name="Retry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_dg3vl")
+text = "Retry	"
+
+[node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_dg3vl")
+text = "Main menu"
