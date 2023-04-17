@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://qlu1xrs7t5t5"]
+
+[node name="IceSpear" type="Area2D"]
