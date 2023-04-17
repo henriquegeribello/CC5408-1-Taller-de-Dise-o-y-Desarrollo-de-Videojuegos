@@ -16,3 +16,6 @@ mono_crash.*.json
 
 # Addons por el plugin de github con godot
 addons/ 
+
+# por los ejecutables
+*.exe
