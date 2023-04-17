@@ -28,8 +28,7 @@ func _physics_process(delta):
 		var shadw = get_tree().get_first_node_in_group("Shadow")
 		shadw.global_position = global_position
 		shadw.movementArray = movement_array
-		shadw.movementCounter = 0
-		
+		shadw.movementCounter = 0		
 	
 	
 func movement():
