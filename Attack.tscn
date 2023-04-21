@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://qlu1xrs7t5t5"]
+
+[ext_resource type="Texture2D" uid="uid://cprm7pfy1asc1" path="res://icon.svg" id="1_yoocs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyxx8"]
+
+[node name="IceSpear" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.75, 3.5)
+shape = SubResource("RectangleShape2D_uyxx8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.5)
+texture = ExtResource("1_yoocs")
+
+[node name="Timer" type="Timer" parent="."]
