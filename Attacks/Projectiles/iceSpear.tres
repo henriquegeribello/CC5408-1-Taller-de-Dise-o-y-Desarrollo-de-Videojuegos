@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=2 format=3 uid="uid://j82ahefa13t6"]
+
+[ext_resource type="Script" path="res://Attacks/genericAttack.gd" id="1_ejgtv"]
+
+[resource]
+script = ExtResource("1_ejgtv")
+name = ""
+description = ""
+max_level = 0
+level = 0
+element = 0
+hp = 1
+speed = 100
+knockback = 100
+attack_size = 1.0
