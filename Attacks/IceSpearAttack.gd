@@ -1,13 +1,13 @@
 extends Node
+var iceSpear = preload("res://Attacks/Projectiles/iceSpear.tres")
 
-var iceSpear = preload("res://Attacks/IceSpear.tscn")
-var player = get_tree().get_first_node_in_group("player")
-
+@onready var player = get_tree().get_first_node_in_group("player")
 @onready var reloadTimer = get_node("%reloadTimer")
 @onready var attackTimer = get_node("%attackTimer")
+@onready var rootScene = get_tree().get_first_node_in_group("root")
 
 #Stats
-var ammo = 0
+var ammo = 1
 var base_amo = 1
 var attack_speed = 1.5
 var level = 1
@@ -25,7 +25,10 @@ func attack():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	attackTimer.wait_time = 1
+	reloadTimer.wait_time = 2
+	attackTimer.start()
+	reloadTimer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,21 +38,28 @@ func _process(delta):
 
 func _on_reload_timer_timeout():
 	ammo += base_amo
-	reloadTimer.start()
+	if attackTimer.is_stopped():
+		attackTimer.start()
 
 
 func _on_attack_timer_timeout():
+	print("ATTACK!")
+	print(ammo)
 	if ammo > 0:
-		var iceSpearAttack = iceSpear.instantiate()
+		var iceSpearAttack = iceSpear.scene.instantiate()
 		iceSpearAttack.position = player.position 
-		iceSpearAttack.target = get_random_target()
+		iceSpearAttack.target = get_random_target() + iceSpearAttack.position
 		iceSpearAttack.level = level
-		add_child(iceSpearAttack)
+		rootScene.add_child(iceSpearAttack)
 		ammo -= 1
 		if ammo > 0:
 			attackTimer.start()
-		else:
-			attackTimer.stop()
+	else:
+		attackTimer.stop()
+		reloadTimer.start()
 
 func get_random_target():
-	pass
+	var trgt = Vector2(randf(), randf()).normalized()
+	print(trgt)
+	return trgt
+
