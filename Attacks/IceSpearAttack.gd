@@ -1,5 +1,9 @@
 extends Node
 
+var iceSpear = preload("res://Attacks/IceSpear.tscn")
+var player = get_tree().get_first_node_in_group("player")
+
+@onready var reloadTimer = get_node("%reloadTimer")
 @onready var attackTimer = get_node("%attackTimer")
 
 #Stats
@@ -13,9 +17,9 @@ var enemy_close = []
 
 func attack():
 	if (level > 0):
-		attackTimer.wait_time = attack_speed
-		if attackTimer.is_stopped():
-			attackTimer.start()
+		reloadTimer.wait_time = attack_speed
+		if reloadTimer.is_stopped():
+			reloadTimer.start()
 
 
 
@@ -31,4 +35,21 @@ func _process(delta):
 
 func _on_reload_timer_timeout():
 	ammo += base_amo
-	attackTimer.start()
+	reloadTimer.start()
+
+
+func _on_attack_timer_timeout():
+	if ammo > 0:
+		var iceSpearAttack = iceSpear.instantiate()
+		iceSpearAttack.position = player.position 
+		iceSpearAttack.target = get_random_target()
+		iceSpearAttack.level = level
+		add_child(iceSpearAttack)
+		ammo -= 1
+		if ammo > 0:
+			attackTimer.start()
+		else:
+			attackTimer.stop()
+
+func get_random_target():
+	pass

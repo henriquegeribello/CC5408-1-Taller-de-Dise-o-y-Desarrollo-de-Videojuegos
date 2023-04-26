@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://4rsp327wfyom"]
+[gd_scene load_steps=2 format=3 uid="uid://4rsp327wfyom"]
 
 [ext_resource type="Script" path="res://Attacks/IceSpearAttack.gd" id="1_oolsp"]
-[ext_resource type="PackedScene" uid="uid://qlu1xrs7t5t5" path="res://Attacks/IceSpear.tscn" id="2_6hj2f"]
 
 [node name="IceSpearAttack" type="Node"]
 script = ExtResource("1_oolsp")
 
-[node name="IceSpear" parent="." instance=ExtResource("2_6hj2f")]
-visible = false
-
 [node name="reloadTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 
+[node name="attackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="reloadTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]
