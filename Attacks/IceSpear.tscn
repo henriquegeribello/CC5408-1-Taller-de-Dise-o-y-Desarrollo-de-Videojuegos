@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://qlu1xrs7t5t5"]
+[gd_scene load_steps=6 format=3 uid="uid://qlu1xrs7t5t5"]
 
 [ext_resource type="Script" path="res://Attacks/iceSpear.gd" id="1_iu1pe"]
 [ext_resource type="Texture2D" uid="uid://guqgrux64jfo" path="res://assets/attacks/IceVFX 1 Repeatable.png" id="2_c4hyi"]
+[ext_resource type="PackedScene" uid="uid://ddhpvif8ronsj" path="res://Utlity/hitbox.tscn" id="3_gx868"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oogd0"]
 radius = 4.57143
 height = 9.71429
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ntmuv"]
+radius = 6.0
+height = 36.0
 
 [node name="IceSpear" type="Area2D"]
 light_mask = 3
@@ -25,4 +30,14 @@ hframes = 10
 [node name="flightTimer" type="Timer" parent="."]
 wait_time = 10.0
 
+[node name="HitBox" parent="." instance=ExtResource("3_gx868")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(1, 2)
+shape = SubResource("CapsuleShape2D_ntmuv")
+
 [connection signal="timeout" from="flightTimer" to="." method="_on_flight_timer_timeout"]
+
+[editable path="HitBox"]
