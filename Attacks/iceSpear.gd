@@ -15,7 +15,7 @@ var angle = Vector2.ZERO
 func _ready():
 	print(target)
 	angle = global_position.direction_to(target)
-	rotation = angle.angle() + deg_to_rad(135)
+	rotation = angle.angle() + deg_to_rad(90)
 
 	
 
