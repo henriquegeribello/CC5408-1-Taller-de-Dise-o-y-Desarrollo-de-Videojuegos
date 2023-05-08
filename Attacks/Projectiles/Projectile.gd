@@ -7,6 +7,8 @@ class_name Projectile
 @export var max_level: int
 @export var level: int
 @export_enum("fire", "ice", "lightning") var element: int
+@export_enum("simple", "homing", "fixed") var type: int
+@export var mov : Vector2
 @export var hp:= 1
 @export var speed:=100
 @export var knockback:= 100
