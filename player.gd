@@ -3,6 +3,8 @@ extends CharacterBody2D
 var movement_speed = 40.0
 var movement_array = []
 
+var hp = 80  
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -38,3 +40,8 @@ func movement():
 	movement_array.append(mov)
 	velocity = mov.normalized()*movement_speed
 	move_and_slide() 
+
+
+func _on_hurt_box_hurt(damage):
+	hp -= damage 
+	print(hp)

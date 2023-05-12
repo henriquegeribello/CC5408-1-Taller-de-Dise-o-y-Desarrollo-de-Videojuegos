@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://4rsp327wfyom"]
+
+[ext_resource type="Script" path="res://Attacks/IceSpearAttack.gd" id="1_oolsp"]
+
+[node name="IceSpearAttack" type="Node"]
+script = ExtResource("1_oolsp")
+
+[node name="reloadTimer" type="Timer" parent="."]
+
+[node name="attackTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="reloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]

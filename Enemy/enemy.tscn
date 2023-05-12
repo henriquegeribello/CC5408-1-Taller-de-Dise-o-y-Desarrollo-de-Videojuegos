@@ -1,11 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbsivqsvjeown"]
+[gd_scene load_steps=8 format=3 uid="uid://dbsivqsvjeown"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_4q2lb"]
 [ext_resource type="Texture2D" uid="uid://dm1qong2m66lv" path="res://assets/enemies/Monsters_Creatures_Fantasy/Skeleton/Idle.png" id="2_5cim7"]
+[ext_resource type="PackedScene" uid="uid://btauj1kt2igi1" path="res://Utlity/hurt_box.tscn" id="3_h856w"]
+[ext_resource type="PackedScene" uid="uid://ddhpvif8ronsj" path="res://Utlity/hitbox.tscn" id="4_ihd7u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynnxi"]
 radius = 9.0
 height = 50.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62df4"]
+radius = 16.0
+height = 53.3333
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ykiu"]
+radius = 14.6667
+height = 52.0
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
@@ -19,3 +29,24 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6, 0)
 shape = SubResource("CapsuleShape2D_ynnxi")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_h856w")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(5.33333, 0)
+shape = SubResource("CapsuleShape2D_62df4")
+
+[node name="HitBox" parent="." instance=ExtResource("4_ihd7u")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(5.33333, 0)
+shape = SubResource("CapsuleShape2D_8ykiu")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

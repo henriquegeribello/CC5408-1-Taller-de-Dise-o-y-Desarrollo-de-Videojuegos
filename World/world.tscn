@@ -5,9 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://b4ot088uxdr51" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_idle.png" id="3_68vwv"]
 [ext_resource type="PackedScene" uid="uid://b4mto47fxynkn" path="res://scenes/pause_menu.tscn" id="3_d6t0v"]
 [ext_resource type="Script" path="res://World/Shadow.gd" id="3_lbua8"]
+[ext_resource type="PackedScene" uid="uid://4rsp327wfyom" path="res://Attacks/IceSpearAttack.tscn" id="3_aupmb"]
 [ext_resource type="PackedScene" uid="uid://dbsivqsvjeown" path="res://Enemy/enemy.tscn" id="3_u70ix"]
+[ext_resource type="PackedScene" uid="uid://b3h0nqlb0mkvd" path="res://Shadow/shadow.tscn" id="4_3alnl"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["root"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
@@ -23,14 +25,9 @@ region_rect = Rect2(0, 0, 10000, 10000)
 
 [node name="PauseMenu" parent="Player" instance=ExtResource("3_d6t0v")]
 visible = false
+[node name="IceSpearAttack" parent="Player" instance=ExtResource("3_aupmb")]
 
 [node name="Enemy" parent="." instance=ExtResource("3_u70ix")]
 position = Vector2(142, 54)
 
-[node name="Shadow" type="Sprite2D" parent="." groups=["Shadow"]]
-modulate = Color(1, 0, 1, 1)
-position = Vector2(637, 121)
-scale = Vector2(2, 2)
-texture = ExtResource("3_68vwv")
-vframes = 6
-script = ExtResource("3_lbua8")
+[node name="Shadow" parent="." instance=ExtResource("4_3alnl")]

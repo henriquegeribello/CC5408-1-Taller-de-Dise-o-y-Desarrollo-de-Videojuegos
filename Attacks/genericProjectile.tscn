@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx231jeqxxn6q"]
+
+[ext_resource type="Script" path="res://Attacks/genericProjectile.gd" id="1_o4eo6"]
+[ext_resource type="PackedScene" uid="uid://ddhpvif8ronsj" path="res://Utlity/hitbox.tscn" id="2_a6aqo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivrvs"]
+radius = 6.0
+height = 36.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j52pp"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_o4eo6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="flightTimer" type="Timer" parent="."]
+
+[node name="HitBox" parent="." instance=ExtResource("2_a6aqo")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CapsuleShape2D_ivrvs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_j52pp")
+
+[editable path="HitBox"]

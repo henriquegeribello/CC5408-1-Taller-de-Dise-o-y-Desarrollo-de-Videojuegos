@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=4 format=3 uid="uid://forgp6j2qpis"]
+
+[ext_resource type="PackedScene" uid="uid://qlu1xrs7t5t5" path="res://Attacks/IceSpear.tscn" id="1_p68ei"]
+[ext_resource type="Script" path="res://Attacks/Projectiles/Projectile.gd" id="2_pauch"]
+[ext_resource type="Texture2D" uid="uid://guqgrux64jfo" path="res://assets/attacks/IceVFX 1 Repeatable.png" id="3_xyefn"]
+
+[resource]
+script = ExtResource("2_pauch")
+scene = ExtResource("1_p68ei")
+name = ""
+description = "An ice spear that goes through enemies. Fires towards the nearest enemy."
+max_level = 5
+level = 1
+element = 1
+type = 0
+mov = Vector2(0, 0)
+hp = 1
+speed = 100
+knockback = 100
+attack_size = 1.0
+damage = 5
+sprite = ExtResource("3_xyefn")
+hframes = 10
+vframes = 1
+rotation = 0
