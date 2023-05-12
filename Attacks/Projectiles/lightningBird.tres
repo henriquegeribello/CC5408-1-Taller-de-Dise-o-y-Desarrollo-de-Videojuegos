@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=3 format=3 uid="uid://jgj1abl0e8ig"]
+
+[ext_resource type="Script" path="res://Attacks/Projectiles/Projectile.gd" id="1_do1bh"]
+[ext_resource type="Texture2D" uid="uid://tpnln4olmkrh" path="res://assets/attacks/Holy VFX 01 Repeatable.png" id="2_8qa6k"]
+
+[resource]
+script = ExtResource("1_do1bh")
+max_level = 1
+base_ammo = 3
+reload_speed = 5
+fire_rate = 1
+level = 1
+element = 2
+type = 0
+mov = Vector2(0, 0)
+hp = 1
+speed = 100
+knockback = 100
+attack_size = 1.0
+damage = 5
+flight_time = 10
+sprite = ExtResource("2_8qa6k")
+hframes = 8
+vframes = 1
+rotation = 0
+name = "Lightning Bird"
+description = ""

@@ -17,10 +17,11 @@ var angle = Vector2.ZERO
 var mov = Vector2.ZERO 
 
 # Sprite params
-var sprite = "res://assets/attacks/IceVFX 1 Repeatable.png"
-var hframes = 10
+var sprite = load("res://assets/attacks/IceVFX 1 Repeatable.png")
+var hframes = 8
 var vframes = 1
 var sprite_rotation = 0
+var frame = 0
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var enemy_target = get_tree().get_first_node_in_group("enemy")
@@ -29,18 +30,26 @@ var sprite_rotation = 0
 
 func _ready():
 	$Sprite2D.texture = sprite
+	$Sprite2D.hframes = hframes
+	$Sprite2D.vframes = vframes
+	$Sprite2D.rotation = sprite_rotation
 	angle = global_position.direction_to(target_pos)
 	rotation = angle.angle()
-	flightTimer.timeout = flight_time
+	flightTimer.wait_time = flight_time
 	flightTimer.start()
 
+func _process(delta):
+	$Sprite2D.set_frame(int(frame))
+	frame += 0.2
+	if frame>hframes:
+		frame = int(frame)%hframes
 
 func _physics_process(delta):
 	match type:
 		simple: 
 			position += angle*speed*delta
 		homing:
-			position += global_position.direction_to(enemy_target.position)*speed*delta
+			position += global_position.direction_to(enemy_target.global_position)*speed*delta
 		fixed:
 			position += mov*speed*delta
 	

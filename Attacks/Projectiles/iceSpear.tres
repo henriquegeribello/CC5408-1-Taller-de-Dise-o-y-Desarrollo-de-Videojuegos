@@ -6,10 +6,11 @@
 
 [resource]
 script = ExtResource("2_pauch")
-scene = ExtResource("1_p68ei")
-name = ""
-description = "An ice spear that goes through enemies. Fires towards the nearest enemy."
 max_level = 5
+base_ammo = 2
+reload_speed = 2
+fire_rate = 1
+scene = ExtResource("1_p68ei")
 level = 1
 element = 1
 type = 0
@@ -19,7 +20,10 @@ speed = 100
 knockback = 100
 attack_size = 1.0
 damage = 5
+flight_time = 10
 sprite = ExtResource("3_xyefn")
 hframes = 10
 vframes = 1
 rotation = 0
+name = "IceSpear"
+description = "An ice spear that goes through enemies. Fires towards the nearest enemy."
