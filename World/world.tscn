@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk88s1l2tfeb0"]
+[gd_scene load_steps=6 format=3 uid="uid://bk88s1l2tfeb0"]
 
 [ext_resource type="Texture2D" uid="uid://qehda634lpl4" path="res://dirt_full_new.png" id="1_l10io"]
 [ext_resource type="PackedScene" uid="uid://do8oqsdg258a8" path="res://player.tscn" id="2_nbq3s"]
-[ext_resource type="PackedScene" uid="uid://4rsp327wfyom" path="res://Attacks/IceSpearAttack.tscn" id="3_aupmb"]
 [ext_resource type="PackedScene" uid="uid://cgri5p7bxsnws" path="res://Attacks/Attack.tscn" id="3_eymy8"]
 [ext_resource type="PackedScene" uid="uid://dbsivqsvjeown" path="res://Enemy/enemy.tscn" id="3_u70ix"]
 [ext_resource type="PackedScene" uid="uid://b3h0nqlb0mkvd" path="res://Shadow/shadow.tscn" id="4_3alnl"]
-[ext_resource type="PackedScene" uid="uid://da5ct71wqbugq" path="res://Attacks/genericProjectileSpawner.tscn" id="5_mxus3"]
 
 [node name="World" type="Node2D" groups=["root"]]
 
@@ -23,10 +21,6 @@ region_rect = Rect2(0, 0, 10000, 10000)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Attack" parent="Player" instance=ExtResource("3_eymy8")]
-
-[node name="IceSpearAttack" parent="Player/Attack" instance=ExtResource("3_aupmb")]
-
-[node name="genericProjectileSpawner" parent="Player/Attack" instance=ExtResource("5_mxus3")]
 
 [node name="Enemy" parent="." instance=ExtResource("3_u70ix")]
 position = Vector2(142, 54)

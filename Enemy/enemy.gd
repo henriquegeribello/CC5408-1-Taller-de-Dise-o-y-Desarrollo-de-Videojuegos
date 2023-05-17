@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 
 @export var movement_speed = 20.0
 
