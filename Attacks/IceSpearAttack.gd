@@ -2,8 +2,8 @@ extends Node
 var iceSpear = preload("res://Attacks/Projectiles/iceSpear.tres")
 
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var reloadTimer = get_node("%reloadTimer")
-@onready var attackTimer = get_node("%attackTimer")
+@onready var reloadTimer = $reloadTimer
+@onready var attackTimer = $attackTimer
 @onready var rootScene = get_tree().get_first_node_in_group("root")
 
 #Stats
