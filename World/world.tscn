@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://qehda634lpl4" path="res://dirt_full_new.png" id="1_l10io"]
 [ext_resource type="PackedScene" uid="uid://do8oqsdg258a8" path="res://player.tscn" id="2_nbq3s"]
 [ext_resource type="PackedScene" uid="uid://4rsp327wfyom" path="res://Attacks/IceSpearAttack.tscn" id="3_aupmb"]
-[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="3_d6t0v"]
-[ext_resource type="PackedScene" uid="uid://dbsivqsvjeown" path="res://Enemy/enemy.tscn" id="3_u70ix"]
+[ext_resource type="PackedScene" uid="uid://b4mto47fxynkn" path="res://scenes/pause_menu.tscn" id="3_d6t0v"]
 [ext_resource type="PackedScene" uid="uid://b3h0nqlb0mkvd" path="res://Shadow/shadow.tscn" id="4_3alnl"]
+[ext_resource type="PackedScene" uid="uid://di0rg47j7at1p" path="res://Utlity/enemy_spawner.tscn" id="7_gyoow"]
 
 [node name="World" type="Node2D" groups=["root"]]
 
@@ -26,7 +26,6 @@ visible = false
 
 [node name="IceSpearAttack" parent="Player" instance=ExtResource("3_aupmb")]
 
-[node name="Enemy" parent="." instance=ExtResource("3_u70ix")]
-position = Vector2(142, 54)
-
 [node name="Shadow" parent="." instance=ExtResource("4_3alnl")]
+
+[node name="EnemySpawner" parent="." instance=ExtResource("7_gyoow")]
