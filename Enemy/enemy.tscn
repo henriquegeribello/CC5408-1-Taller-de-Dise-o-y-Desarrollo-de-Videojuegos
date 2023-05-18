@@ -17,7 +17,7 @@ height = 53.3333
 radius = 14.6667
 height = 52.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.5, 1.5)
 motion_mode = 1
 script = ExtResource("1_4q2lb")
@@ -30,7 +30,7 @@ hframes = 4
 position = Vector2(6, 0)
 shape = SubResource("CapsuleShape2D_ynnxi")
 
-[node name="HurtBox" parent="." instance=ExtResource("3_h856w")]
+[node name="HurtBox" parent="." groups=["hurtbox"] instance=ExtResource("3_h856w")]
 collision_layer = 4
 collision_mask = 4
 
