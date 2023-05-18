@@ -6,8 +6,8 @@ var projectile : Projectile
 var ammo : int
 var level = 1
 
-var player_mov : Vector2
 var available_enemies = []
+var player_mov : Vector2
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var rootScene = get_tree().get_first_node_in_group("root")
@@ -29,14 +29,18 @@ func _ready():
 
 func _on_attack_timer_timeout():
 	if ammo > 0:
-		var pew = bullet_init()
-		set_target(pew)
-		
-		rootScene.add_child(pew)
+		if not available_enemies.is_empty():
+			bullet_init()
 	else:
 		if not attackTimer.is_stopped():
 			attackTimer.stop()
 		reloadTimer.start()
+
+func _on_reload_timer_timeout():
+	ammo = projectile.base_ammo
+	if not reloadTimer.is_stopped():
+		reloadTimer.stop()
+	attackTimer.start()
 
 func bullet_init():
 	var bullet = projectile_node.instantiate()
@@ -51,18 +55,19 @@ func bullet_init():
 	bullet.hframes = projectile.hframes
 	bullet.vframes = projectile.vframes
 	bullet.sprite_rotation = projectile.rotation
-	
-	return bullet
+	set_target(bullet)
+	rootScene.add_child(bullet)
 
 func set_target(bullet):
 	match bullet.type:
 		simple:
-			if player.movement_array[-1] != Vector2.ZERO:
-				player_mov = player.movement_array[-1]
+			if player.velocity != Vector2.ZERO:
+				player_mov = player.velocity.normalized()
 			bullet.target_pos = player_mov
 		homing:
 			if (available_enemies.size()):
-				bullet.enemy_target = get_closest_enemy()
+				var en = get_closest_enemy()
+				bullet.enemy_target = en
 		fixed:
 			bullet.mov = projectile.mov
 
@@ -77,7 +82,7 @@ func get_closest_enemy():
 
 
 func _on_body_entered(body):
-	if body is Enemy:
+	if body is Enemy and not available_enemies.has(body):
 		available_enemies.append(body)
 
 
@@ -86,8 +91,4 @@ func _on_body_exited(body):
 		available_enemies.erase(body)
 
 
-func _on_reload_timer_timeout():
-	ammo = projectile.base_ammo
-	if not reloadTimer.is_stopped():
-		reloadTimer.stop()
-	attackTimer.start()
+
