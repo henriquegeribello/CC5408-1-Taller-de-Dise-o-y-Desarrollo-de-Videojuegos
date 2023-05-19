@@ -12,6 +12,8 @@ const JUMP_VELOCITY = -400.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@onready var shadw = get_tree().get_first_node_in_group("Shadow")
+
 
 func _physics_process(delta):
 	movement()
@@ -27,7 +29,6 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if Input.is_action_just_pressed("ui_accept"):
-		var shadw = get_tree().get_first_node_in_group("Shadow")
 		shadw.global_position = global_position
 		shadw.movementArray = movement_array
 		shadw.movementCounter = 0
