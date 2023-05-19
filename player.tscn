@@ -156,6 +156,9 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_vyh4r")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_rpcn7")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
 [node name="HurtBox" parent="." instance=ExtResource("3_dm30n")]
 collision_layer = 2
 collision_mask = 2
