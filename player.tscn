@@ -1,11 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://do8oqsdg258a8"]
+[gd_scene load_steps=18 format=3 uid="uid://do8oqsdg258a8"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_l2r0f"]
 [ext_resource type="Texture2D" uid="uid://b4ot088uxdr51" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_idle.png" id="2_e4qfw"]
 [ext_resource type="PackedScene" uid="uid://btauj1kt2igi1" path="res://Utlity/hurt_box.tscn" id="3_dm30n"]
 [ext_resource type="PackedScene" uid="uid://cgri5p7bxsnws" path="res://Attacks/Attack.tscn" id="4_xpiue"]
-[ext_resource type="PackedScene" uid="uid://4rsp327wfyom" path="res://Attacks/IceSpearAttack.tscn" id="5_0beu6"]
-[ext_resource type="PackedScene" uid="uid://da5ct71wqbugq" path="res://Attacks/genericProjectileSpawner.tscn" id="6_qorut"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21h5w"]
 radius = 4.65382
@@ -168,10 +166,6 @@ position = Vector2(-1, 4)
 shape = SubResource("CapsuleShape2D_mttdy")
 
 [node name="Attack" parent="." instance=ExtResource("4_xpiue")]
-
-[node name="IceSpearAttack" parent="Attack" instance=ExtResource("5_0beu6")]
-
-[node name="genericProjectileSpawner" parent="Attack" instance=ExtResource("6_qorut")]
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
