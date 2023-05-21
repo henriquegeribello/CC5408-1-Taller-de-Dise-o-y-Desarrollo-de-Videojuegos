@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://kf7b7d0hqaog"]
+[gd_scene load_steps=4 format=3 uid="uid://cxypi7ldrueu8"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_8qu51"]
-[ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/theme.tres" id="1_xboat"]
 [ext_resource type="PackedScene" uid="uid://bk88s1l2tfeb0" path="res://World/world.tscn" id="2_fw5vq"]
+[ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="3_1yoev"]
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_1yoev")
 script = ExtResource("1_8qu51")
 main_scene = ExtResource("2_fw5vq")
 
@@ -19,28 +20,72 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+theme = ExtResource("3_1yoev")
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 27
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_xboat")
+size_flags_vertical = 0
+theme = ExtResource("3_1yoev")
 theme_type_variation = &"BigLabel"
 text = "Time Survivors :D"
 
-[node name="Start" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+size_flags_stretch_ratio = 7.37
+theme_override_constants/separation = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 19
+theme_override_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Start" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("1_xboat")
+theme = ExtResource("3_1yoev")
 text = "Start"
 
-[node name="Exit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="Options" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
-theme = ExtResource("1_xboat")
+theme = ExtResource("3_1yoev")
+text = "Options"
+
+[node name="Credits" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("3_1yoev")
+text = "Credits"
+
+[node name="Exit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_1yoev")
 text = "Exit"
