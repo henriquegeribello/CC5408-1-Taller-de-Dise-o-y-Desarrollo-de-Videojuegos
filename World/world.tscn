@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://qehda634lpl4" path="res://dirt_full_new.png" id="1_l10io"]
 [ext_resource type="PackedScene" uid="uid://do8oqsdg258a8" path="res://player.tscn" id="2_nbq3s"]
 [ext_resource type="PackedScene" uid="uid://4rsp327wfyom" path="res://Attacks/IceSpearAttack.tscn" id="3_aupmb"]
-[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="3_d6t0v"]
+[ext_resource type="PackedScene" uid="uid://81kvogybllp2" path="res://scenes/pause_menu.tscn" id="3_d6t0v"]
 [ext_resource type="PackedScene" uid="uid://dbsivqsvjeown" path="res://Enemy/enemy.tscn" id="3_u70ix"]
 [ext_resource type="PackedScene" uid="uid://b3h0nqlb0mkvd" path="res://Shadow/shadow.tscn" id="4_3alnl"]
 
@@ -19,10 +19,15 @@ region_rect = Rect2(0, 0, 10000, 10000)
 
 [node name="Player" parent="." instance=ExtResource("2_nbq3s")]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="PauseMenu" parent="Player" instance=ExtResource("3_d6t0v")]
-visible = false
+z_index = 10
+offset_left = -78.5
+offset_top = -84.0
+offset_right = 214.5
+offset_bottom = 247.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="IceSpearAttack" parent="Player" instance=ExtResource("3_aupmb")]
 
