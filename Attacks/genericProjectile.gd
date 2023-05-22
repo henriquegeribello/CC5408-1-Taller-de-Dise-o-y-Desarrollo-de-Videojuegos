@@ -57,14 +57,12 @@ func _physics_process(delta):
 			position += mov*speed*delta
 	
 func enemy_hit(charge = 1):
-	print("enemy hit!")
 	hp -= charge
 	if hp <= 0:
 		queue_free()
 		
 
 func _on_hit_box_area_entered(area):
-	print("area entered")
 	if area.is_in_group("hurtbox"):
 		if area.get_parent().is_in_group("enemy"):
 			enemy_hit(1)
