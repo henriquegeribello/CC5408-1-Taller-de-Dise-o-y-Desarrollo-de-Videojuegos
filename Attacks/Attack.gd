@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 var projectileSpawner = load("res://Attacks/genericProjectileSpawner.tscn")
 var projectiles = {
@@ -17,10 +17,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	# print(global_position)
 
 
 func create_spawner(projectile_name):
 	var ret = projectileSpawner.instantiate()
 	ret.projectile = projectiles[projectile_name]
-	add_sibling.call_deferred(ret)
+	add_child(ret)
 	return ret

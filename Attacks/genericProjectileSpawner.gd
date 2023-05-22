@@ -21,9 +21,9 @@ func _ready():
 	attackTimer.wait_time = projectile.fire_rate
 	reloadTimer.wait_time = projectile.reload_speed
 	attackTimer.start()
-
-
-
+	
+func _process(delta):
+	global_position = get_parent().global_position
 
 
 func _on_attack_timer_timeout():
