@@ -17,7 +17,6 @@ var player_mov : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	projectile = load("res://Attacks/Projectiles/lightningBird.tres")
 	ammo = projectile.base_ammo
 	attackTimer.wait_time = projectile.fire_rate
 	reloadTimer.wait_time = projectile.reload_speed
