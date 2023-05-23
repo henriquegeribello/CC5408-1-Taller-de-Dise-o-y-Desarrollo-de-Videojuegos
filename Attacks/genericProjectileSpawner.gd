@@ -23,7 +23,8 @@ func _ready():
 	attackTimer.start()
 	
 func _process(delta):
-	global_position = get_parent().global_position
+	#global_position = get_parent().global_position
+	pass
 
 
 func _on_attack_timer_timeout():

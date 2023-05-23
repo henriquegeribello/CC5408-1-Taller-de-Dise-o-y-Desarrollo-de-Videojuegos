@@ -6,7 +6,6 @@
 radius = 400.0
 
 [node name="genericProjectileSpawner" type="Area2D"]
-top_level = true
 monitorable = false
 script = ExtResource("1_q0exb")
 
