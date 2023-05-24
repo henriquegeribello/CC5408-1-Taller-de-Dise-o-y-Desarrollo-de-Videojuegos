@@ -6,6 +6,7 @@ class_name Projectile
 @export var base_ammo: int
 @export var reload_speed: int
 @export var fire_rate: int
+@export var nextlvl : Projectile
 
 # Bullet mechanic handling params
 @export var scene : PackedScene

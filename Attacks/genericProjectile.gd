@@ -64,9 +64,11 @@ func enemy_hit(charge = 1):
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("hurtbox"):
-		if area.get_parent().is_in_group("enemy"):
+		var parent = area.get_parent()
+		if parent.is_in_group("enemy"):
 			enemy_hit(1)
-		
+		elif parent.is_in_group("player"):
+			pass # TODO: add exp
 
 
 

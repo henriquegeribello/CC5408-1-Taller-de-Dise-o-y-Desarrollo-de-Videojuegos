@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvlp0plspyptg"]
+
+[ext_resource type="PackedScene" uid="uid://bx231jeqxxn6q" path="res://Attacks/genericProjectile.tscn" id="1_jes5q"]
+
+[node name="genericShadowProjectile" instance=ExtResource("1_jes5q")]
+
+[editable path="HitBox"]
