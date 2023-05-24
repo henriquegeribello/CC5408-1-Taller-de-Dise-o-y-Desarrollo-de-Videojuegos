@@ -7,7 +7,7 @@ var ammo : int
 var level = 1
 
 var available_enemies = []
-var player_mov : Vector2
+var player_mov = Vector2(1, 0)
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var rootScene = get_tree().get_first_node_in_group("root")
@@ -21,15 +21,14 @@ func _ready():
 	attackTimer.wait_time = projectile.fire_rate
 	reloadTimer.wait_time = projectile.reload_speed
 	attackTimer.start()
-	
-func _process(delta):
-	global_position = get_parent().global_position
 
 
 func _on_attack_timer_timeout():
 	if ammo > 0:
 		if not available_enemies.is_empty():
 			bullet_init()
+			ammo -= 1
+		attackTimer.start()
 	else:
 		if not attackTimer.is_stopped():
 			attackTimer.stop()
@@ -54,6 +53,8 @@ func bullet_init():
 	bullet.hframes = projectile.hframes
 	bullet.vframes = projectile.vframes
 	bullet.sprite_rotation = projectile.rotation
+	bullet.collision = projectile.collision
+	bullet.collision_rot = projectile.collision_rot
 	set_target(bullet)
 	rootScene.add_child(bullet)
 
