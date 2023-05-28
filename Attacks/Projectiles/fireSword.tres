@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=2 format=3 uid="uid://btpxr4af6iido"]
+
+[ext_resource type="Script" path="res://Attacks/Projectiles/Projectile.gd" id="1_d6dp2"]
+
+[resource]
+script = ExtResource("1_d6dp2")
+max_level = 0
+base_ammo = 0
+reload_speed = 0
+fire_rate = 0
+level = 0
+element = 0
+type = 0
+mov = Vector2(0, 0)
+hp = 1
+speed = 100
+knockback = 100
+attack_size = 1.0
+damage = 5
+flight_time = 10
+hframes = 10
+vframes = 1
+rotation = 0
+name = ""
+description = ""

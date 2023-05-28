@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://da5ct71wqbugq"]
+
+[ext_resource type="Script" path="res://Attacks/genericProjectileSpawner.gd" id="1_q0exb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4fhel"]
+radius = 400.0
+
+[node name="genericProjectileSpawner" type="Area2D"]
+monitorable = false
+script = ExtResource("1_q0exb")
+
+[node name="attackTimer" type="Timer" parent="."]
+
+[node name="reloadTimer" type="Timer" parent="."]
+
+[node name="enemyDetection" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+shape = SubResource("CircleShape2D_4fhel")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="attackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="reloadTimer" to="." method="_on_reload_timer_timeout"]

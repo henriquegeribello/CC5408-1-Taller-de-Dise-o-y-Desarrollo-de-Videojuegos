@@ -43,8 +43,6 @@ func _on_reload_timer_timeout():
 
 
 func _on_attack_timer_timeout():
-	print("ATTACK!")
-	print(ammo)
 	if ammo > 0:
 		var iceSpearAttack = iceSpear.scene.instantiate()
 		iceSpearAttack.position = player.position 
@@ -60,6 +58,5 @@ func _on_attack_timer_timeout():
 
 func get_random_target():
 	var trgt = Vector2(randf(), randf()).normalized()
-	print(trgt)
 	return trgt
 

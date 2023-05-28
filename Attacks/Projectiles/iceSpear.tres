@@ -7,9 +7,9 @@
 [resource]
 script = ExtResource("2_pauch")
 max_level = 5
-base_ammo = 0
-reload_speed = 0
-fire_rate = 0
+base_ammo = 2
+reload_speed = 2
+fire_rate = 1
 scene = ExtResource("1_p68ei")
 level = 1
 element = 1
@@ -25,5 +25,5 @@ sprite = ExtResource("3_xyefn")
 hframes = 10
 vframes = 1
 rotation = 0
-name = ""
+name = "IceSpear"
 description = "An ice spear that goes through enemies. Fires towards the nearest enemy."
