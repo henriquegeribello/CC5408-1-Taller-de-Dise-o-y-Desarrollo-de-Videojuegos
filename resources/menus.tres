@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cup2t4417g3ys"]
+
+[ext_resource type="FontFile" uid="uid://bch3kajqolbib" path="res://assets/fonts/PixeloidMono.ttf" id="1_fw6y4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njdv3"]
+bg_color = Color(0.635294, 0, 0.603922, 0.764706)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic0v7"]
+bg_color = Color(0.682353, 0.0823529, 0.831373, 0.529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy5g8"]
+bg_color = Color(0.447059, 0.623529, 0.839216, 1)
+
+[resource]
+Button/colors/font_outline_color = Color(0.231373, 0.196078, 0.290196, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 0
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("1_fw6y4")
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_njdv3")
+Button/styles/normal = SubResource("StyleBoxFlat_ic0v7")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0.231373, 0.196078, 0.290196, 1)
+Label/colors/font_shadow_color = Color(0.635294, 0, 0.603922, 1)
+Label/colors/font_shadow_outline_color = Color(0, 0, 0, 0.921569)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 14
+Label/constants/shadow_offset_x = 8
+Label/constants/shadow_offset_y = 6
+Label/constants/shadow_outline_size = 4
+Label/font_sizes/font_size = 50
+Label/fonts/font = ExtResource("1_fw6y4")
+Label/styles/normal = null
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_iy5g8")
+VBoxContainer/constants/separation = 15
