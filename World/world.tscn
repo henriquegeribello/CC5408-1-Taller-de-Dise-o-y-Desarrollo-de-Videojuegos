@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://qehda634lpl4" path="res://dirt_full_new.png" id="1_l10io"]
 [ext_resource type="PackedScene" uid="uid://do8oqsdg258a8" path="res://player.tscn" id="2_nbq3s"]
-[ext_resource type="PackedScene" uid="uid://b4mto47fxynkn" path="res://scenes/pause_menu.tscn" id="3_d6t0v"]
+[ext_resource type="PackedScene" uid="uid://81kvogybllp2" path="res://scenes/pause_menu.tscn" id="3_d6t0v"]
 [ext_resource type="PackedScene" uid="uid://cgri5p7bxsnws" path="res://Attacks/Attack.tscn" id="3_eymy8"]
 [ext_resource type="PackedScene" uid="uid://b3h0nqlb0mkvd" path="res://Shadow/shadow.tscn" id="4_3alnl"]
 [ext_resource type="PackedScene" uid="uid://di0rg47j7at1p" path="res://Utlity/enemy_spawner.tscn" id="7_gyoow"]
@@ -24,7 +24,14 @@ region_rect = Rect2(0, 0, 10000, 10000)
 [node name="Attack" parent="Player" instance=ExtResource("3_eymy8")]
 
 [node name="PauseMenu" parent="Player" instance=ExtResource("3_d6t0v")]
-visible = false
+z_index = 10
+offset_left = -78.5
+offset_top = -84.0
+offset_right = 214.5
+offset_bottom = 247.0
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Shadow" parent="." instance=ExtResource("4_3alnl")]
 

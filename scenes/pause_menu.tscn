@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4mto47fxynkn"]
+[gd_scene load_steps=4 format=3 uid="uid://81kvogybllp2"]
 
 [ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_uw26o"]
-[ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/theme.tres" id="2_dg3vl"]
+[ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="2_bo412"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mtdu"]
+bg_color = Color(0.447059, 0.623529, 0.839216, 0.721569)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [node name="PauseMenu" type="MarginContainer"]
 process_mode = 3
@@ -9,18 +16,28 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1.0
+offset_top = -1.0
 offset_right = 1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_bo412")
 script = ExtResource("1_uw26o")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mtdu")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
@@ -28,24 +45,26 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_dg3vl")
+theme = ExtResource("2_bo412")
 theme_type_variation = &"BigLabel"
 text = "Pause"
 
 [node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("2_dg3vl")
+theme = ExtResource("2_bo412")
 text = "Resume"
 
 [node name="Retry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("2_dg3vl")
+theme = ExtResource("2_bo412")
 text = "Retry	"
 
 [node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme = ExtResource("2_dg3vl")
+theme = ExtResource("2_bo412")
 text = "Main menu"
+
+[node name="Node" type="Node" parent="."]
