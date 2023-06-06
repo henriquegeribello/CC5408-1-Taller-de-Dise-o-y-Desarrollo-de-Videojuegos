@@ -3,7 +3,7 @@ extends CharacterBody2D
 var movement_speed = 50.0
 var movement_array = []
 
-var hp = 80  
+var hp = 50  
 
 
 const SPEED = 300.0
@@ -13,7 +13,10 @@ const JUMP_VELOCITY = -400.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var shadw = get_tree().get_first_node_in_group("Shadow")
+@onready var healthBar = get_node("%HealthBar")
 
+func _ready():
+	_on_hurt_box_hurt(0)
 
 func _physics_process(delta):
 	movement()
@@ -45,4 +48,6 @@ func movement():
 
 func _on_hurt_box_hurt(damage):
 	hp -= damage 
+	healthBar.max_value = 50
+	healthBar.value = hp
 	print(hp)
