@@ -4,6 +4,7 @@ var movementArray = []
 var movementCounter = 0
 
 var timeline : ShadowTimeline
+var mov : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +27,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var mov = movementArray[movementCounter]
+	mov = movementArray[movementCounter]
 	position += mov
 	movementCounter+=1
 	movementCounter = movementCounter%movementArray.size()

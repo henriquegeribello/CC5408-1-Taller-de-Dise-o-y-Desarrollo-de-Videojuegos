@@ -7,9 +7,13 @@ var ammo : int
 var level = 1
 
 var available_enemies = []
-var player_mov = Vector2(1, 0)
 
-@onready var player = get_tree().get_first_node_in_group("player")
+var ray_number = 16
+var closest_enemy : Vector2
+
+var shadow_mov = Vector2(1, 0)
+
+@onready var shadow = get_tree().get_first_node_in_group("shadow")
 @onready var rootScene = get_tree().get_first_node_in_group("root")
 @onready var reloadTimer = $reloadTimer
 @onready var attackTimer = $attackTimer
@@ -26,8 +30,22 @@ func _process(delta):
 	#global_position = get_parent().global_position
 	pass
 
+func _physics_process(delta):
+	var space_state = get_world_2d().direct_space_state
+	closest_enemy = Vector2(100, 100)
+	for i in ray_number:
+		var ray_target = Vector2(0, 1).rotated(360/ray_number)
+		var ray = PhysicsRayQueryParameters2D.create(global_position, global_position + ray_target)
+		ray.exclude = [self]
+		var result = space_state.intersect_ray(ray)
+		if result:
+			if (global_position.distance_squared_to(result["position"]) < global_position.distance_squared_to(closest_enemy)):
+				closest_enemy = result.position
+				print(closest_enemy)
+	
 
 func _on_attack_timer_timeout():
+	print("Shadow attack")
 	if ammo > 0:
 		if not available_enemies.is_empty():
 			bullet_init()
@@ -52,7 +70,7 @@ func bullet_init():
 	bullet.speed = projectile.speed
 	bullet.damage = projectile.damage
 	bullet.flight_time = projectile.flight_time
-	bullet.position = player.position
+	bullet.position = shadow.position
 	bullet.sprite = projectile.sprite
 	bullet.hframes = projectile.hframes
 	bullet.vframes = projectile.vframes
@@ -65,9 +83,9 @@ func bullet_init():
 func set_target(bullet):
 	match bullet.type:
 		simple:
-			if player.velocity != Vector2.ZERO:
-				player_mov = player.velocity.normalized()
-			bullet.target_pos = player_mov
+			if shadow.mov != Vector2.ZERO:
+				shadow_mov = shadow.mov.normalized()
+			bullet.target_pos = shadow_mov
 		homing:
 			if (available_enemies.size()):
 				var en = get_closest_enemy()
@@ -77,11 +95,11 @@ func set_target(bullet):
 
 func get_closest_enemy():
 	var ret = available_enemies[0]
-	var dist = ret.global_position.distance_squared_to(player.global_position)
+	var dist = ret.global_position.distance_squared_to(shadow.global_position)
 	for en in available_enemies:
-		if en.global_position.distance_squared_to(player.global_position) < dist:
+		if en.global_position.distance_squared_to(shadow.global_position) < dist:
 			ret = en
-			dist = en.global_position.distance_squared_to(player.global_position)
+			dist = en.global_position.distance_squared_to(shadow.global_position)
 	return ret
 
 

@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_j4v5t")
 movement_array = [Vector2(0, 0), Vector2(0, 0)]
-init_attacks = ["\"res://Shadow/Timelines/last_game_timeline.tres\""]
+init_attacks = ["res://Attacks/Projectiles/lightningBird.tres"]
 attack_array = []
 timestamps = []
 events = []
