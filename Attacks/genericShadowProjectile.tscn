@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvlp0plspyptg"]
+[gd_scene load_steps=3 format=3 uid="uid://dvlp0plspyptg"]
 
 [ext_resource type="PackedScene" uid="uid://bx231jeqxxn6q" path="res://Attacks/genericProjectile.tscn" id="1_jes5q"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c34d6"]
+resource_local_to_scene = true
+radius = 6.0
+height = 36.0
+
 [node name="genericShadowProjectile" instance=ExtResource("1_jes5q")]
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CapsuleShape2D_c34d6")
 
 [editable path="HitBox"]
