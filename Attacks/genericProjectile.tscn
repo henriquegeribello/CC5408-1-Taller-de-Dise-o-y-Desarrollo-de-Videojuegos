@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ddhpvif8ronsj" path="res://Utlity/hitbox.tscn" id="2_a6aqo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ivrvs"]
+resource_local_to_scene = true
 radius = 6.0
 height = 36.0
 

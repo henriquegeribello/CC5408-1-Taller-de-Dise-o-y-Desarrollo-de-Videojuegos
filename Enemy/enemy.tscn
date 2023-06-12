@@ -19,6 +19,7 @@ height = 52.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.5, 1.5)
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_4q2lb")
 
