@@ -36,22 +36,21 @@ func _physics_process(delta):
 	var closest_col = Vector2(100, 100)
 	var dir_vec = Vector2(0, 100)
 	for i in ray_number:
-		var ray_target = dir_vec
-		dir_vec = dir_vec.rotated(deg_to_rad(360/ray_number))
-		var ray = PhysicsRayQueryParameters2D.create(global_position, global_position + ray_target)
+		var ray_target = Vector2.from_angle(360/ray_number * i)
+#		dir_vec = dir_vec.rotated(deg_to_rad(360/ray_number))
+		var ray = PhysicsRayQueryParameters2D.create(global_position, global_position + ray_target * 400)
 		ray.exclude = [self, get_parent(), get_parent().get_parent()]
 		var result = space_state.intersect_ray(ray)
 		if result:
-			if (global_position.distance_squared_to(result["position"]) < global_position.distance_squared_to(closest_col)):
-				if result.collider.is_in_group("Enemy"):
-					print(result)
-					closest_enemy = result.collider
-					print(closest_enemy)
-	
+			prints(i,"Result:", result)
+#			if (global_position.distance_squared_to(result["position"]) < global_position.distance_squared_to(closest_col)):
+#				if result.collider.is_in_group("Enemy"):
+#					print(result)
+#					closest_enemy = result.collider
+#					print(closest_enemy)
+
 
 func _on_attack_timer_timeout():
-	print("Shadow attack")
-	print(closest_enemy)
 	if ammo > 0:
 		bullet_init()
 		ammo -= 1
