@@ -4,7 +4,7 @@ var movement_speed = 50.0
 var movement_array = []
 
 var hp = 10  
-
+var time = 0
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -18,6 +18,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
+@onready var lbl_timer = $GUI/lblTimer
 
 func _physics_process(delta):
 	movement()
@@ -59,3 +60,13 @@ func movement():
 func _on_hurt_box_hurt(damage):
 	hp -= damage 
 	print(hp)
+
+func change_time(argtime = 0):
+	time = argtime
+	var minutes = int(time/60)
+	var seconds = time % 60
+	if minutes < 10 :
+		minutes = str(0,minutes)
+	if seconds < 10:
+		seconds = str(0,seconds)
+	lbl_timer.text = str(minutes,":",seconds)
