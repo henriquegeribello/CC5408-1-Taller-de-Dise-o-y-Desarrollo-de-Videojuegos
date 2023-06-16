@@ -11,11 +11,15 @@ var kback_amount = 100
 var attack_size = 1.0
 var flight_time = 10
 
+var collision = "res://Attacks/Collisions/capsule_collision.tres"
+var collision_rot = deg_to_rad(-90)
 
-var target_pos = Vector2.ZERO
+var target_pos = Vector2(1, 0)
 var angle = Vector2.ZERO
 var mov = Vector2.ZERO 
 var enemy_target : Enemy
+
+
 
 # Sprite params
 var sprite = load("res://assets/attacks/IceVFX 1 Repeatable.png")
@@ -33,12 +37,17 @@ func _ready():
 	$Sprite2D.hframes = hframes
 	$Sprite2D.vframes = vframes
 	$Sprite2D.rotation = sprite_rotation
+	
+	$HitBox/CollisionShape2D.set_shape(load(collision))
+	$HitBox/CollisionShape2D.rotate(collision_rot)
+	
 	rotate(get_angle_to(target_pos + position))
 	flightTimer.wait_time = flight_time
 	flightTimer.start()
 
 func _process(delta):
 	$Sprite2D.set_frame(int(frame))
+
 	frame += 0.2
 	if frame>hframes:
 		frame = int(frame)%hframes
@@ -64,9 +73,11 @@ func enemy_hit(charge = 1):
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("hurtbox"):
-		if area.get_parent().is_in_group("enemy"):
+		var parent = area.get_parent()
+		if parent.is_in_group("enemy"):
 			enemy_hit(1)
-		
+		elif parent.is_in_group("player"):
+			pass # TODO: add exp
 
 
 

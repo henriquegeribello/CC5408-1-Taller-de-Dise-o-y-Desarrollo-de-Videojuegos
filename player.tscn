@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://do8oqsdg258a8"]
+[gd_scene load_steps=24 format=3 uid="uid://do8oqsdg258a8"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_l2r0f"]
 [ext_resource type="Texture2D" uid="uid://b4ot088uxdr51" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_idle.png" id="2_e4qfw"]
 [ext_resource type="PackedScene" uid="uid://btauj1kt2igi1" path="res://Utlity/hurt_box.tscn" id="3_dm30n"]
+[ext_resource type="Texture2D" uid="uid://c0bkcqit4vp1v" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_run.png" id="3_y57ky"]
 [ext_resource type="PackedScene" uid="uid://cgri5p7bxsnws" path="res://Attacks/Attack.tscn" id="4_xpiue"]
 [ext_resource type="Theme" uid="uid://ckh4u1b00d2m8" path="res://Utlity/theme.tres" id="5_su7wy"]
+[ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="6_c71uy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21h5w"]
 radius = 4.65382
@@ -14,109 +16,149 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Pivot/Sprite2D:vframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_e4qfw")]
+"values": [6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/path = NodePath("Pivot/Sprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_e4qfw")]
+}
 
 [sub_resource type="Animation" id="Animation_duk4l"]
 resource_name = "idle"
-length = 0.5
+length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Pivot/Sprite2D:vframes")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_e4qfw")]
+"values": [6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/path = NodePath("Pivot/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_e4qfw")]
+}
+
+[sub_resource type="Animation" id="Animation_62fjl"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_y57ky")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:vframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [8]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r723w"]
 _data = {
 "RESET": SubResource("Animation_moqdt"),
-"idle": SubResource("Animation_duk4l")
+"idle": SubResource("Animation_duk4l"),
+"run": SubResource("Animation_62fjl")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_aqkg8"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cxw08"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x5cyu"]
-animation = &"idle"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k3soo"]
+animation = &"run"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ghko"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vfxbc"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u3hsj"]
-switch_mode = 2
-advance_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7m0jn"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nstpt"]
-switch_mode = 2
-advance_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pay5t"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x88ch"]
-states/idle/node = SubResource("AnimationNodeAnimation_x5cyu")
-states/idle/position = Vector2(393.333, 56.6667)
-"states/idle 2/node" = SubResource("AnimationNodeAnimation_aqkg8")
-"states/idle 2/position" = Vector2(553.333, 58)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_8ghko"), "idle", "idle 2", SubResource("AnimationNodeStateMachineTransition_u3hsj"), "idle 2", "idle", SubResource("AnimationNodeStateMachineTransition_nstpt")]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7cgow"]
+states/Start/position = Vector2(188, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_cxw08")
+states/idle/position = Vector2(355, 100)
+states/run/node = SubResource("AnimationNodeAnimation_k3soo")
+states/run/position = Vector2(537, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_vfxbc"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_7m0jn"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_pay5t")]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_vyh4r"]
 
@@ -155,7 +197,9 @@ scale = Vector2(2, 2)
 motion_mode = 1
 script = ExtResource("1_l2r0f")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("2_e4qfw")
 vframes = 6
 
@@ -170,8 +214,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_x88ch")
+tree_root = SubResource("AnimationNodeStateMachine_7cgow")
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_vyh4r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -203,6 +248,27 @@ theme_override_styles/background = SubResource("StyleBoxFlat_ariy8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fhvch")
 value = 50.0
 show_percentage = false
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="lblTimer" type="Label" parent="GUI"]
+z_index = 5
+layout_mode = 0
+offset_left = -21.0
+offset_top = -90.0
+offset_right = 23.0
+offset_bottom = -71.0
+theme = ExtResource("6_c71uy")
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 13
+text = "00:00"
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
