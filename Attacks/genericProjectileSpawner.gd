@@ -69,21 +69,23 @@ func set_target(bullet):
 				player_mov = player.velocity.normalized()
 			bullet.target_pos = player_mov
 		homing:
-			if (available_enemies.size()):
-				var en = get_closest_enemy()
-				bullet.enemy_target = en
+			var enmy = get_closest_enemy()
+			if enmy:
+				bullet.enemy_target = enmy
 		fixed:
 			bullet.mov = projectile.mov
 
-func get_closest_enemy():
-	var ret = available_enemies[0]
-	var dist = ret.global_position.distance_squared_to(player.global_position)
-	for en in available_enemies:
-		if en.global_position.distance_squared_to(player.global_position) < dist:
-			ret = en
-			dist = en.global_position.distance_squared_to(player.global_position)
-	return ret
+#func get_closest_enemy():
+#	var ret = available_enemies[0]
+#	var dist = ret.global_position.distance_squared_to(player.global_position)
+#	for en in available_enemies:
+#		if en.global_position.distance_squared_to(player.global_position) < dist:
+#			ret = en
+#			dist = en.global_position.distance_squared_to(player.global_position)
+#	return ret
 
+func get_closest_enemy():
+	return get_parent().get_closest_enemy()
 
 func _on_body_entered(body):
 	if body is Enemy and not available_enemies.has(body):

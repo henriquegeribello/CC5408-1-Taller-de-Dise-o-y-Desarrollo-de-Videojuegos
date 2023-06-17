@@ -8,6 +8,7 @@ var projectiles = {
 
 var iceSpear : Node2D
 var lightningBird : Node2D
+var ray_number = 16
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,7 +18,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	# print(global_position)
 
 
 func create_spawner(projectile_name):
@@ -25,3 +25,6 @@ func create_spawner(projectile_name):
 	ret.projectile = projectiles[projectile_name]
 	add_child(ret)
 	return ret
+
+func get_closest_enemy():
+	return %rayEnemyDetector.get_closest_enemy()

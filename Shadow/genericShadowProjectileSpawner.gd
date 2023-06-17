@@ -37,7 +37,7 @@ func _physics_process(delta):
 	var dir_vec = Vector2(0, 100)
 	for i in ray_number:
 		var ray_target = dir_vec
-		dir_vec = dir_vec.rotated(deg_to_rad(360/ray_number))
+		dir_vec = dir_vec.rotated(deg_to_rad(360.0/ray_number))
 		var ray = PhysicsRayQueryParameters2D.create(global_position, global_position + ray_target)
 		ray.exclude = [self, get_parent(), get_parent().get_parent()]
 		var result = space_state.intersect_ray(ray)
@@ -95,15 +95,17 @@ func set_target(bullet):
 		fixed:
 			bullet.mov = projectile.mov
 
-func get_closest_enemy():
-	var ret = available_enemies[0]
-	var dist = ret.global_position.distance_squared_to(shadow.global_position)
-	for en in available_enemies:
-		if en.global_position.distance_squared_to(shadow.global_position) < dist:
-			ret = en
-			dist = en.global_position.distance_squared_to(shadow.global_position)
-	return ret
+#func get_closest_enemy():
+#	var ret = available_enemies[0]
+#	var dist = ret.global_position.distance_squared_to(shadow.global_position)
+#	for en in available_enemies:
+#		if en.global_position.distance_squared_to(shadow.global_position) < dist:
+#			ret = en
+#			dist = en.global_position.distance_squared_to(shadow.global_position)
+#	return ret
 
+func get_closest_enemy():
+	return get_parent().get_closest_enemy()
 
 func _on_body_entered(body):
 	if body is Enemy and not available_enemies.has(body):

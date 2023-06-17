@@ -18,6 +18,8 @@ func _ready():
 		print(attack)
 		spawner.projectile = load(attack)
 		add_child(spawner)
+	
+	%rayEnemyDetector.exception_body = get_parent()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,3 +36,7 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body in available_enemies:
 		available_enemies.erase(body)
+		
+
+func get_closest_enemy():
+	return %rayEnemyDetector.get_closest_enemy()

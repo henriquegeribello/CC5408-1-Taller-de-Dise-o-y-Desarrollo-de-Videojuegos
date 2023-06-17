@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3h0nqlb0mkvd"]
+[gd_scene load_steps=6 format=3 uid="uid://b3h0nqlb0mkvd"]
 
 [ext_resource type="Texture2D" uid="uid://b4ot088uxdr51" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_idle.png" id="1_csvke"]
 [ext_resource type="Script" path="res://World/Shadow.gd" id="2_fx12w"]
 [ext_resource type="Script" path="res://Shadow/Attack.gd" id="3_iabrr"]
+[ext_resource type="PackedScene" uid="uid://byj266x45prpb" path="res://Attacks/rayEnemyDetector.tscn" id="4_pkwrt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_05n6u"]
 radius = 400.0
@@ -20,6 +21,9 @@ script = ExtResource("3_iabrr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 shape = SubResource("CircleShape2D_05n6u")
+
+[node name="rayEnemyDetector" parent="Attack" instance=ExtResource("4_pkwrt")]
+unique_name_in_owner = true
 
 [node name="deathTimer" type="Timer" parent="."]
 
