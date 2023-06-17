@@ -3,6 +3,7 @@ extends CharacterBody2D
 var movement_speed = 50.0
 var movement_array = []
 
+var max_hp = 10
 var hp = 10  
 var time = 0
 
@@ -14,6 +15,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var shdwtimeline := ShadowTimeline.new()
 
 @onready var shadw = get_tree().get_first_node_in_group("Shadow")
+@onready var healthBar = get_node("%HealthBar")
+
+func _ready():
+	_on_hurt_box_hurt(0)
 @onready var pivot = $Pivot
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
@@ -59,6 +64,8 @@ func movement():
 
 func _on_hurt_box_hurt(damage):
 	hp -= damage 
+	healthBar.max_value = max_hp
+	healthBar.value = hp
 	print(hp)
 
 func change_time(argtime = 0):

@@ -50,8 +50,6 @@ func _physics_process(delta):
 	
 
 func _on_attack_timer_timeout():
-	print("Shadow attack")
-	print(closest_enemy)
 	if ammo > 0:
 		bullet_init()
 		ammo -= 1
