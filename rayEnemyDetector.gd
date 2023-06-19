@@ -1,4 +1,5 @@
 extends Node2D
+class_name EnemyDetector
 
 var ray_number = 16
 
@@ -45,3 +46,11 @@ func get_closest_enemy():
 			last_closest_distance = position.distance_squared_to(to_local(ray.get_collision_point()))
 	print(last_closest_enemy)
 	return last_closest_enemy
+
+func check_for_enemies():
+	for ray in rays_array:
+		ray.force_raycast_update()
+		if ray.is_colliding():
+			return true
+			
+	return false

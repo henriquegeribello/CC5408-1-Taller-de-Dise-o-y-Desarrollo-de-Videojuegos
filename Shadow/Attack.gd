@@ -17,9 +17,10 @@ func _ready():
 		var spawner = attack_spawner.instantiate()
 		print(attack)
 		spawner.projectile = load(attack)
+		spawner.enemyDetect = %rayEnemyDetector
 		add_child(spawner)
 	
-	%rayEnemyDetector.exception_body = get_parent()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

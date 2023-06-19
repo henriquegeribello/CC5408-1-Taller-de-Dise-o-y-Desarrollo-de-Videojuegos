@@ -7,13 +7,13 @@ var ammo : int
 var level = 1
 
 var available_enemies = []
+var enemyDetect : EnemyDetector
 var player_mov = Vector2(1, 0)
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var rootScene = get_tree().get_first_node_in_group("root")
 @onready var reloadTimer = $reloadTimer
 @onready var attackTimer = $attackTimer
-@onready var enemyDetect = $enemyDetection 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,7 +29,7 @@ func _process(delta):
 
 func _on_attack_timer_timeout():
 	if ammo > 0:
-		if not available_enemies.is_empty():
+		if check_for_enemies():
 			bullet_init()
 			ammo -= 1
 		attackTimer.start()
@@ -70,7 +70,7 @@ func set_target(bullet):
 			bullet.target_pos = player_mov
 		homing:
 			var enmy = get_closest_enemy()
-			if enmy:
+			if enmy != null:
 				bullet.enemy_target = enmy
 		fixed:
 			bullet.mov = projectile.mov
@@ -85,13 +85,8 @@ func set_target(bullet):
 #	return ret
 
 func get_closest_enemy():
-	return get_parent().get_closest_enemy()
+	return enemyDetect.get_closest_enemy()
+	
+func check_for_enemies():
+	return enemyDetect.check_for_enemies()
 
-func _on_body_entered(body):
-	if body is Enemy and not available_enemies.has(body):
-		available_enemies.append(body)
-
-
-func _on_body_exited(body):
-	if body in available_enemies:
-		available_enemies.erase(body)

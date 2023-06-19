@@ -7,6 +7,7 @@ var ammo : int
 var level = 1
 
 var available_enemies = []
+var enemyDetect : EnemyDetector
 
 var ray_number = 16
 var closest_enemy : Enemy
@@ -17,7 +18,7 @@ var shadow_mov = Vector2(1, 0)
 @onready var rootScene = get_tree().get_first_node_in_group("root")
 @onready var reloadTimer = $reloadTimer
 @onready var attackTimer = $attackTimer
-@onready var enemyDetect = $enemyDetection 
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -90,8 +91,9 @@ func set_target(bullet):
 				shadow_mov = shadow.mov.normalized()
 			bullet.target_pos = shadow_mov
 		homing:
-			if (available_enemies.size()):
-				bullet.enemy_target = get_closest_enemy()
+			var enm = get_closest_enemy()
+			if enm != null:
+				bullet.enemy_target = enm
 		fixed:
 			bullet.mov = projectile.mov
 
@@ -105,13 +107,5 @@ func set_target(bullet):
 #	return ret
 
 func get_closest_enemy():
-	return get_parent().get_closest_enemy()
+	return enemyDetect.get_closest_enemy()
 
-func _on_body_entered(body):
-	if body is Enemy and not available_enemies.has(body):
-		available_enemies.append(body)
-
-
-func _on_body_exited(body):
-	if body in available_enemies:
-		available_enemies.erase(body)
