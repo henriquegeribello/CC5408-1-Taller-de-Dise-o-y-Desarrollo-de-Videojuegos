@@ -21,6 +21,7 @@ damage = 5
 flight_time = 10
 collision = "res://Attacks/Collisions/capsule_collision.tres"
 collision_rot = -1.5708
+shift = Vector2(0, 1)
 sprite = ExtResource("3_xyefn")
 hframes = 10
 vframes = 1

@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name genericProjectile
 # Mechanic handling parameters
 enum {simple, homing, fixed, melee}
 var type = simple
