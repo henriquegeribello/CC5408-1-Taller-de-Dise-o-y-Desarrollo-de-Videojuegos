@@ -10,8 +10,8 @@ class_name Projectile
 
 # Bullet mechanic handling params
 @export var level: int
-@export_enum("fire", "ice", "lightning") var element: int
-@export_enum("simple", "homing", "fixed") var type: int
+@export_enum("fire", "ice", "lightning", "phys") var element: int
+@export_enum("simple", "homing", "fixed", "melee") var type: int
 @export var mov : Vector2
 @export var hp:= 1
 @export var speed:=100
@@ -21,6 +21,7 @@ class_name Projectile
 @export var flight_time := 10
 @export var collision = "res://Attacks/Collisions/capsule_collision.tres"
 @export var collision_rot = deg_to_rad(-90)
+@export var shift := Vector2(0, 1)
 
 #@export var 
 

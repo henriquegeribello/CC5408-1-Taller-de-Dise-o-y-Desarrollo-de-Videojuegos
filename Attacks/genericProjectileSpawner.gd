@@ -64,25 +64,17 @@ func bullet_init():
 
 func set_target(bullet):
 	match bullet.type:
-		simple:
-			if player.velocity != Vector2.ZERO:
-				player_mov = player.velocity.normalized()
-			bullet.target_pos = player_mov
 		homing:
 			var enmy = get_closest_enemy()
 			if enmy != null:
 				bullet.enemy_target = enmy
 		fixed:
 			bullet.mov = projectile.mov
-
-#func get_closest_enemy():
-#	var ret = available_enemies[0]
-#	var dist = ret.global_position.distance_squared_to(player.global_position)
-#	for en in available_enemies:
-#		if en.global_position.distance_squared_to(player.global_position) < dist:
-#			ret = en
-#			dist = en.global_position.distance_squared_to(player.global_position)
-#	return ret
+			
+		_:
+			if player.velocity != Vector2.ZERO:
+				player_mov = player.velocity.normalized()
+			bullet.target_pos = player_mov
 
 func get_closest_enemy():
 	return enemyDetect.get_closest_enemy()

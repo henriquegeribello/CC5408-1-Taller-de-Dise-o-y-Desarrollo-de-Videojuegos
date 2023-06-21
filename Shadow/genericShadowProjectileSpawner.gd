@@ -97,15 +97,6 @@ func set_target(bullet):
 		fixed:
 			bullet.mov = projectile.mov
 
-#func get_closest_enemy():
-#	var ret = available_enemies[0]
-#	var dist = ret.global_position.distance_squared_to(shadow.global_position)
-#	for en in available_enemies:
-#		if en.global_position.distance_squared_to(shadow.global_position) < dist:
-#			ret = en
-#			dist = en.global_position.distance_squared_to(shadow.global_position)
-#	return ret
-
 func get_closest_enemy():
 	return enemyDetect.get_closest_enemy()
 
