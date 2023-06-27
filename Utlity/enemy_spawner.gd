@@ -9,6 +9,11 @@ var number_of_enemies_in_la_pantalla = 0
 var max_number_of_enemies = 60
 
 
+signal changetime(time)
+
+func _ready():
+	connect("changetime",Callable(player, "change_time"))
+
 func _on_timer_timeout():
 	time +=1
 	var enemy_spawns = spawns
@@ -26,7 +31,7 @@ func _on_timer_timeout():
 					add_child(enemy_spawn)
 					number_of_enemies_in_la_pantalla  +=1
 					counter +=1
-
+	emit_signal("changetime", time)
 
 func get_random_position():
 	var vpr = get_viewport_rect().size * randf_range(1.1,1.4)

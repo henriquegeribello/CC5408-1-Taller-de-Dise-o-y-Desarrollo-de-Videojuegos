@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3h0nqlb0mkvd"]
+[gd_scene load_steps=5 format=3 uid="uid://b3h0nqlb0mkvd"]
 
 [ext_resource type="Texture2D" uid="uid://b4ot088uxdr51" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_idle.png" id="1_csvke"]
 [ext_resource type="Script" path="res://World/Shadow.gd" id="2_fx12w"]
+[ext_resource type="Script" path="res://Shadow/Attack.gd" id="3_iabrr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_05n6u"]
+radius = 400.0
 
 [node name="Shadow" type="Sprite2D" groups=["Shadow"]]
 modulate = Color(1, 0, 1, 1)
@@ -10,3 +14,15 @@ scale = Vector2(2, 2)
 texture = ExtResource("1_csvke")
 vframes = 6
 script = ExtResource("2_fx12w")
+
+[node name="Attack" type="Area2D" parent="."]
+script = ExtResource("3_iabrr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+shape = SubResource("CircleShape2D_05n6u")
+
+[node name="deathTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Attack" to="Attack" method="_on_body_entered"]
+[connection signal="body_exited" from="Attack" to="Attack" method="_on_body_exited"]
+[connection signal="timeout" from="deathTimer" to="." method="_on_death_timer_timeout"]
