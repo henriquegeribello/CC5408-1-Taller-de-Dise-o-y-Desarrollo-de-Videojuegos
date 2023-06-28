@@ -2,10 +2,12 @@ extends Node2D
 
 
 @export var spawns: Array[Spawn_info] = []
-
 @onready var player= get_tree().get_first_node_in_group("player")
 
 var time = 0 
+var number_of_enemies_in_la_pantalla = 0
+var max_number_of_enemies = 60
+@export var number_of_enemies_slayed_by_the_player = 0 
 
 signal changetime(time)
 
@@ -19,7 +21,7 @@ func _on_timer_timeout():
 		if time >= i.time_start and time <= i.time_end:
 			if i.spawn_delay_counter < i.enemy_spawn_delay:
 				i.spawn_delay_counter +=1
-			else: 
+			elif number_of_enemies_in_la_pantalla  < max_number_of_enemies:
 				i.spawn_delay_counter = 0
 				var new_enemy = load(str(i.enemy.resource_path))
 				var counter = 0 
@@ -27,6 +29,7 @@ func _on_timer_timeout():
 					var enemy_spawn = new_enemy.instantiate()
 					enemy_spawn.global_position= get_random_position()
 					add_child(enemy_spawn)
+					number_of_enemies_in_la_pantalla  +=1
 					counter +=1
 	emit_signal("changetime", time)
 

@@ -17,6 +17,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var shadw = get_tree().get_first_node_in_group("Shadow")
 @onready var healthBar = get_node("%HealthBar")
 
+
 func _ready():
 	_on_hurt_box_hurt(0)
 @onready var pivot = $Pivot
@@ -24,6 +25,8 @@ func _ready():
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var lbl_timer = $GUI/lblTimer
+@onready var deadEnemiesCounter = $GUI/deadEnemiesCounter
+@onready var numberOfDeadEnemies = get_parent().get_node("EnemySpawner").number_of_enemies_slayed_by_the_player
 
 func _physics_process(delta):
 	movement()
@@ -68,6 +71,8 @@ func _on_hurt_box_hurt(damage):
 	healthBar.value = hp
 	print(hp)
 
+		
+
 func change_time(argtime = 0):
 	time = argtime
 	var minutes = int(time/60)
@@ -77,3 +82,7 @@ func change_time(argtime = 0):
 	if seconds < 10:
 		seconds = str(0,seconds)
 	lbl_timer.text = str(minutes,":",seconds)
+	
+func change_deadEnemiesCounter(numberOfDeadEnemies):
+	print("estoy aca")
+	deadEnemiesCounter.text = str(numberOfDeadEnemies)
