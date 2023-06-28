@@ -19,3 +19,6 @@ func _ready():
 
 func _physics_process(delta):
 	position = player.global_position + target_pos.normalized()*50
+
+func enemy_hit(charge = 1):
+	hp -= charge

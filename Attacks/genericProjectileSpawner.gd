@@ -70,7 +70,6 @@ func set_target(bullet):
 				bullet.enemy_target = enmy
 		fixed:
 			bullet.mov = projectile.mov
-			
 		_:
 			if player.velocity != Vector2.ZERO:
 				player_mov = player.velocity.normalized()
