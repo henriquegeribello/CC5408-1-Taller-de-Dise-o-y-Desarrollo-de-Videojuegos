@@ -7,7 +7,7 @@ extends Node2D
 var time = 0 
 var number_of_enemies_in_la_pantalla = 0
 var max_number_of_enemies = 60
-
+@export var number_of_enemies_slayed_by_the_player = 0 
 
 signal changetime(time)
 

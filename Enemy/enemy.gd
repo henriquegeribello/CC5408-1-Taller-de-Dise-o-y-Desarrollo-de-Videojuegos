@@ -20,6 +20,11 @@ func _on_hurt_box_hurt(damage):
 	hp -= damage
 	if hp <= 0:
 		EnemySpawner.number_of_enemies_in_la_pantalla-=1
+		EnemySpawner.number_of_enemies_slayed_by_the_player+=1
+		
+		player.change_deadEnemiesCounter(EnemySpawner.number_of_enemies_slayed_by_the_player)
+		
+		print( EnemySpawner.number_of_enemies_slayed_by_the_player)
 		queue_free()
 
 

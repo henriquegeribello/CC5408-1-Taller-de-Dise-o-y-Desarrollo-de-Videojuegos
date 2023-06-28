@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://do8oqsdg258a8"]
+[gd_scene load_steps=25 format=3 uid="uid://do8oqsdg258a8"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_l2r0f"]
 [ext_resource type="Texture2D" uid="uid://b4ot088uxdr51" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_idle.png" id="2_e4qfw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cgri5p7bxsnws" path="res://Attacks/Attack.tscn" id="4_xpiue"]
 [ext_resource type="Theme" uid="uid://ckh4u1b00d2m8" path="res://Utlity/theme.tres" id="5_su7wy"]
 [ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="6_c71uy"]
+[ext_resource type="Texture2D" uid="uid://dm1qong2m66lv" path="res://assets/enemies/Monsters_Creatures_Fantasy/Skeleton/Idle.png" id="8_fr74o"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_21h5w"]
 radius = 4.65382
@@ -269,6 +270,26 @@ theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 13
 text = "00:00"
+
+[node name="deadEnemiesCounter" type="Label" parent="GUI"]
+z_index = 5
+layout_mode = 0
+offset_left = 133.0
+offset_top = -81.0
+offset_right = 177.0
+offset_bottom = -62.0
+theme = ExtResource("6_c71uy")
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 1
+theme_override_font_sizes/font_size = 13
+text = "0"
+
+[node name="Sprite2D" type="Sprite2D" parent="GUI"]
+position = Vector2(202, -75)
+scale = Vector2(0.368125, 0.356667)
+texture = ExtResource("8_fr74o")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
