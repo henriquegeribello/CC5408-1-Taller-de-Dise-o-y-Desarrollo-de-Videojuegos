@@ -13,6 +13,7 @@ var flight_time = 10
 
 var collision = "res://Attacks/Collisions/capsule_collision.tres"
 var collision_rot = deg_to_rad(-90)
+var collision_shift = Vector2.ZERO
 
 # Variables used by the different projectile types
 

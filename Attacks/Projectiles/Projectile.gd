@@ -19,8 +19,10 @@ class_name Projectile
 @export var attack_size:= 1.0
 @export var damage:= 5
 @export var flight_time := 10
+
 @export var collision = "res://Attacks/Collisions/capsule_collision.tres"
 @export var collision_rot = deg_to_rad(-90)
+@export var collision_shift = Vector2.ZERO
 @export var shift := Vector2(0, 1)
 
 #@export var 

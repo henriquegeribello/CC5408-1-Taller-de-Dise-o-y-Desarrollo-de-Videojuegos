@@ -11,6 +11,8 @@ script = ExtResource("1_fn5ko")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="HitBox" parent="." instance=ExtResource("2_oejre")]
+collision_layer = 4
+collision_mask = 4
 
 [connection signal="timeout" from="flightTimer" to="." method="_on_flight_timer_timeout"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

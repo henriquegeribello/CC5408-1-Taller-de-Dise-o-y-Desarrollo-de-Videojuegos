@@ -1,7 +1,12 @@
 extends Node2D
 
-enum {simple, homing, fixed}
+enum {simple, homing, fixed, melee}
 var projectile_node = preload("res://Attacks/genericProjectile.tscn")
+
+var simple_projectile_node = preload("res://Attacks/simpleProjectile.tscn")
+var homing_projectile_node = preload("res://Attacks/homingProjectile.tscn")
+var melee_projectile_node = preload("res://Attacks/meleeProjectile.tscn")
+
 var projectile : Projectile
 var ammo : int
 var level = 1
@@ -45,7 +50,17 @@ func _on_reload_timer_timeout():
 	attackTimer.start()
 
 func bullet_init():
-	var bullet = projectile_node.instantiate()
+	var bullet : Node2D
+	match projectile.type:
+		simple:
+			bullet = simple_projectile_node.instantiate()
+		homing:
+			bullet = homing_projectile_node.instantiate()
+		melee:
+			bullet = melee_projectile_node.instantiate()
+		_:
+			bullet = projectile_node.intantiate()
+		
 	bullet.type = projectile.type
 	bullet.level = level
 	bullet.hp = projectile.hp
@@ -58,6 +73,7 @@ func bullet_init():
 	bullet.vframes = projectile.vframes
 	bullet.sprite_rotation = projectile.rotation
 	bullet.collision = projectile.collision
+	bullet.collision_shift = projectile.collision_shift
 	bullet.collision_rot = projectile.collision_rot
 	set_target(bullet)
 	rootScene.add_child(bullet)

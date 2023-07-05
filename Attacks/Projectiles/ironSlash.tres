@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_shdei")
 max_level = 3
-base_ammo = 1
+base_ammo = 2
 reload_speed = 1.0
 fire_rate = 1.0
 level = 1
@@ -19,8 +19,9 @@ knockback = 100
 attack_size = 1.0
 damage = 5
 flight_time = 1
-collision = "res://Attacks/Collisions/capsule_collision.tres"
+collision = "res://Attacks/Collisions/triangle_collision.tres"
 collision_rot = -1.5708
+collision_shift = Vector2(-30, 0)
 shift = Vector2(1, 1)
 sprite = ExtResource("2_5fadq")
 hframes = 5

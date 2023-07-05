@@ -1,6 +1,6 @@
 extends Node2D
 
-enum {simple, homing, fixed}
+enum {simple, homing, fixed, melee}
 var projectile_node = preload("res://Attacks/genericProjectile.tscn")
 var projectile : Projectile
 var ammo : int
