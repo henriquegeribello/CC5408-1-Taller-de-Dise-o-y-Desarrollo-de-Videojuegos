@@ -82,3 +82,4 @@ func save_run():
 	shdwtimeline.movement_array = movement_array
 	shdwtimeline.init_attacks = ["res://Attacks/Projectiles/iceSpear.tres", "res://Attacks/Projectiles/ironSlash.tres", "res://Attacks/Projectiles/lightningBird.tres"]
 	shdwtimeline.time_of_death = time
+	ResourceSaver.save(shdwtimeline, "res://Shadow/Timelines/last_game_timeline.tres")
