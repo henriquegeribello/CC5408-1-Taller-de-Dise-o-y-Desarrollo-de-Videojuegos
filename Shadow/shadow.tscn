@@ -7,7 +7,6 @@
 
 [node name="Shadow" type="Sprite2D" groups=["Shadow"]]
 modulate = Color(1, 0, 1, 1)
-position = Vector2(349, 230)
 scale = Vector2(2, 2)
 texture = ExtResource("1_csvke")
 vframes = 6

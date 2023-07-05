@@ -41,7 +41,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		shadw.global_position = global_position
 		shadw.movementArray = movement_array
-		shadw.movementCounter = 0	
+		shadw.movementCounter = 0
+		save_run()
 		
 	
 	
