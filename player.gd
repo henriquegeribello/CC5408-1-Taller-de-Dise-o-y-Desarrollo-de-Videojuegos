@@ -77,3 +77,8 @@ func change_time(argtime = 0):
 	if seconds < 10:
 		seconds = str(0,seconds)
 	lbl_timer.text = str(minutes,":",seconds)
+	
+func save_run():
+	shdwtimeline.movement_array = movement_array
+	shdwtimeline.init_attacks = ["res://Attacks/Projectiles/iceSpear.tres", "res://Attacks/Projectiles/ironSlash.tres", "res://Attacks/Projectiles/lightningBird.tres"]
+	shdwtimeline.time_of_death = time

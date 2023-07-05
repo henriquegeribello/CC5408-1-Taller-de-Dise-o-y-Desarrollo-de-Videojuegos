@@ -33,7 +33,5 @@ func _process(delta):
 	movementCounter = movementCounter%movementArray.size()
 
 
-
-
 func _on_death_timer_timeout():
 	queue_free()
