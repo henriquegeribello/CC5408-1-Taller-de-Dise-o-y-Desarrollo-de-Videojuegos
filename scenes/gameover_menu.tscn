@@ -10,7 +10,7 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="GameOverMenu" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,6 +28,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_4mtdu")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+z_index = 8
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4

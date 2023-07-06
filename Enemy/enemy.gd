@@ -24,7 +24,7 @@ func _on_hurt_box_hurt(damage):
 		
 		player.change_deadEnemiesCounter(EnemySpawner.number_of_enemies_slayed_by_the_player)
 		
-		print( EnemySpawner.number_of_enemies_slayed_by_the_player)
+
 		queue_free()
 
 
