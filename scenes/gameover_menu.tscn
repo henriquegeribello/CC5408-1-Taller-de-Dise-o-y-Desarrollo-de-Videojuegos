@@ -11,6 +11,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [node name="GameOverMenu" type="MarginContainer"]
+process_mode = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,13 +48,13 @@ theme = ExtResource("1_7f55q")
 theme_type_variation = &"BigLabel"
 text = "Game Over"
 
-[node name="Retry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="RetryOfGameOver" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_7f55q")
 text = "Retry	"
 
-[node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MainMenuOfGameOver" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_7f55q")
