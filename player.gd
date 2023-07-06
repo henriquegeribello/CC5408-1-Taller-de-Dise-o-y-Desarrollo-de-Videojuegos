@@ -4,7 +4,7 @@ var movement_speed = 50.0
 var movement_array = []
 
 var max_hp = 10
-var hp = 10  
+var hp = 1 
 var time = 0
 
 const SPEED = 300.0
@@ -16,14 +16,22 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var shadw = get_tree().get_first_node_in_group("Shadow")
 @onready var healthBar = get_node("%HealthBar")
+@onready var gom = get_node("GameOverMenu")
+
+signal show_menu()
+
 
 func _ready():
 	_on_hurt_box_hurt(0)
+	#connect("show_menu",Callable(gom, "show_menu"))
 @onready var pivot = $Pivot
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var lbl_timer = $GUI/lblTimer
+@onready var deadEnemiesCounter = $GUI/deadEnemiesCounter
+@onready var numberOfDeadEnemies = get_parent().get_node("EnemySpawner").number_of_enemies_slayed_by_the_player
+
 
 func _physics_process(delta):
 	movement()
@@ -67,7 +75,12 @@ func _on_hurt_box_hurt(damage):
 	hp -= damage 
 	healthBar.max_value = max_hp
 	healthBar.value = hp
+	if hp <= 0:
+		#emit_signal("show_menu")
+		gom.show_menu()
 	print(hp)
+
+		
 
 func change_time(argtime = 0):
 	time = argtime
@@ -84,3 +97,5 @@ func save_run():
 	shdwtimeline.init_attacks = ["res://Attacks/Projectiles/iceSpear.tres", "res://Attacks/Projectiles/ironSlash.tres", "res://Attacks/Projectiles/lightningBird.tres"]
 	shdwtimeline.time_of_death = time
 	ResourceSaver.save(shdwtimeline, "res://Shadow/Timelines/last_game_timeline.tres")
+func change_deadEnemiesCounter(numberOfDeadEnemies):
+	deadEnemiesCounter.text = str(numberOfDeadEnemies)

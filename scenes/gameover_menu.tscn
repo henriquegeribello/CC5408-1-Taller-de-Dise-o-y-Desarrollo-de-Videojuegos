@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://1hfpcrrygpk1"]
+
+[ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="1_7f55q"]
+[ext_resource type="Script" path="res://scenes/gameover_menu.gd" id="2_vpfd6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mtdu"]
+bg_color = Color(0.447059, 0.623529, 0.839216, 0.721569)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="GameOverMenu" type="MarginContainer"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("1_7f55q")
+script = ExtResource("2_vpfd6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mtdu")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+z_index = 8
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_7f55q")
+theme_type_variation = &"BigLabel"
+text = "Game Over"
+
+[node name="RetryOfGameOver" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_7f55q")
+text = "Retry	"
+
+[node name="MainMenuOfGameOver" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_7f55q")
+text = "Main menu"
