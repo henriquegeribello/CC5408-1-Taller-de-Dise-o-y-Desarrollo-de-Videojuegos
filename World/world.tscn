@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://81kvogybllp2" path="res://scenes/pause_menu.tscn" id="3_d6t0v"]
 [ext_resource type="PackedScene" uid="uid://cgri5p7bxsnws" path="res://Attacks/Attack.tscn" id="3_eymy8"]
 [ext_resource type="PackedScene" uid="uid://b3h0nqlb0mkvd" path="res://Shadow/shadow.tscn" id="4_3alnl"]
-[ext_resource type="PackedScene" uid="uid://c0ji65f1kwbdy" path="res://scenes/gameover_menu.tscn" id="5_20jjb"]
+[ext_resource type="PackedScene" uid="uid://1hfpcrrygpk1" path="res://scenes/gameover_menu.tscn" id="5_20jjb"]
 [ext_resource type="PackedScene" uid="uid://di0rg47j7at1p" path="res://Utlity/enemy_spawner.tscn" id="7_gyoow"]
 
 [node name="World" type="Node2D" groups=["root"]]
@@ -33,14 +33,17 @@ offset_bottom = 247.0
 scale = Vector2(0.5, 0.5)
 
 [node name="GameOverMenu" parent="Player" instance=ExtResource("5_20jjb")]
-offset_left = -212.0
-offset_top = -128.0
-offset_right = 213.0
-offset_bottom = 129.0
+z_index = 10
+offset_left = -111.5
+offset_top = -69.0
+offset_right = 313.5
+offset_bottom = 188.0
+scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Shadow" parent="." instance=ExtResource("4_3alnl")]
+position = Vector2(443, 256)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_gyoow")]

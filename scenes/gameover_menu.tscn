@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0ji65f1kwbdy"]
+[gd_scene load_steps=4 format=3 uid="uid://1hfpcrrygpk1"]
 
 [ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="1_7f55q"]
 [ext_resource type="Script" path="res://scenes/gameover_menu.gd" id="2_vpfd6"]
@@ -32,10 +32,10 @@ z_index = 8
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
