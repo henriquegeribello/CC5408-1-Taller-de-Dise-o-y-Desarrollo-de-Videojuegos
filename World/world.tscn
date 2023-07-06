@@ -44,6 +44,5 @@ size_flags_horizontal = 4
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
 [node name="Shadow" parent="." instance=ExtResource("4_3alnl")]
-position = Vector2(443, 256)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_gyoow")]

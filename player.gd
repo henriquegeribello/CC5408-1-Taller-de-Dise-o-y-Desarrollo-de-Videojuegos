@@ -46,15 +46,13 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		shadw.global_position = global_position
-		shadw.movementArray = movement_array
-		shadw.movementCounter = 0
-		save_run()
-		
-	
-	
-	
+	#if Input.is_action_just_pressed("ui_accept"):
+	#	shadw.global_position = global_position
+	#	shadw.movementArray = movement_array
+	#	shadw.movementCounter = 0
+	#	save_run()	
+
+
 func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -77,6 +75,7 @@ func _on_hurt_box_hurt(damage):
 	healthBar.value = hp
 	if hp <= 0:
 		#emit_signal("show_menu")
+		save_run()
 		gom.show_menu()
 	print(hp)
 
