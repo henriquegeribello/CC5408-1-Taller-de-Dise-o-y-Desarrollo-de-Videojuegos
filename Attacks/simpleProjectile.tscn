@@ -15,6 +15,8 @@ script = ExtResource("1_tnb76")
 [node name="flightTimer" type="Timer" parent="."]
 
 [node name="HitBox" parent="." instance=ExtResource("2_iujys")]
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CapsuleShape2D_u3rmk")

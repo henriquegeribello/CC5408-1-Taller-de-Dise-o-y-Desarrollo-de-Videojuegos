@@ -14,8 +14,8 @@ var ray_number = 16
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#iceSpear = create_spawner("ice_spear")
-	#lightningBird = create_spawner("lightning_bird")
+	iceSpear = create_spawner("ice_spear")
+	lightningBird = create_spawner("lightning_bird")
 	ironSlash = create_spawner("iron_slash")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
