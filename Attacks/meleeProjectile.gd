@@ -7,9 +7,12 @@ func _ready():
 	$Sprite2D.hframes = hframes
 	$Sprite2D.vframes = vframes
 	$Sprite2D.rotation = sprite_rotation
+	$Sprite2D.scale = Vector2(attack_size, attack_size)
 	
 	$HitBox/CollisionShape2D.set_shape(load(collision))
 	$HitBox.position += collision_shift
+	$HitBox/CollisionShape2D.shape.set_radius($HitBox/CollisionShape2D.shape.get_radius()*sqrt(attack_size))
+	$HitBox/CollisionShape2D.shape.set_height($HitBox/CollisionShape2D.shape.get_height()*sqrt(attack_size))
 	$HitBox/CollisionShape2D.rotate(collision_rot)
 
 	
@@ -20,7 +23,7 @@ func _ready():
 	frame_speed = hframes/flight_time
 
 func _physics_process(delta):
-	position = player.global_position + target_pos.normalized()*40
+	position = attacker.global_position + target_pos.normalized()*40
 
 func enemy_hit(charge = 1):
 	hp -= charge

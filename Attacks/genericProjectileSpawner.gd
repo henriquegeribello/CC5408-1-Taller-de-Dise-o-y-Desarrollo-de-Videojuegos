@@ -50,7 +50,7 @@ func _on_reload_timer_timeout():
 	attackTimer.start()
 
 func bullet_init():
-	var bullet : Node2D
+	var bullet : genericProjectile
 	match projectile.type:
 		simple:
 			bullet = simple_projectile_node.instantiate()
@@ -75,6 +75,8 @@ func bullet_init():
 	bullet.collision = projectile.collision
 	bullet.collision_shift = projectile.collision_shift
 	bullet.collision_rot = projectile.collision_rot
+	bullet.attack_size = projectile.attack_size
+	bullet.attacker = player
 	set_target(bullet)
 	rootScene.add_child(bullet)
 

@@ -19,9 +19,6 @@ func _ready():
 		spawner.projectile = load(attack)
 		spawner.enemyDetect = %rayEnemyDetector
 		add_child(spawner)
-	
-
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

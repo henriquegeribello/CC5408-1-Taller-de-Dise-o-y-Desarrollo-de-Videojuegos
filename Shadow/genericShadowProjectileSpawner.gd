@@ -14,10 +14,15 @@ var closest_enemy : Enemy
 var rays = []
 var shadow_mov = Vector2(1, 0)
 
+var simple_projectile_node = preload("res://Attacks/simpleProjectile.tscn")
+var homing_projectile_node = preload("res://Attacks/homingProjectile.tscn")
+var melee_projectile_node = preload("res://Attacks/meleeProjectile.tscn")
+
 @onready var shadow = get_tree().get_first_node_in_group("Shadow")
 @onready var rootScene = get_tree().get_first_node_in_group("root")
 @onready var reloadTimer = $reloadTimer
 @onready var attackTimer = $attackTimer
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -67,7 +72,17 @@ func _on_reload_timer_timeout():
 	attackTimer.start()
 
 func bullet_init():
-	var bullet = projectile_node.instantiate()
+	var bullet : genericProjectile
+	match projectile.type:
+		simple:
+			bullet = simple_projectile_node.instantiate()
+		homing:
+			bullet = homing_projectile_node.instantiate()
+		melee:
+			bullet = melee_projectile_node.instantiate()
+		_:
+			bullet = projectile_node.intantiate()
+		
 	bullet.type = projectile.type
 	bullet.level = level
 	bullet.hp = projectile.hp
@@ -80,7 +95,10 @@ func bullet_init():
 	bullet.vframes = projectile.vframes
 	bullet.sprite_rotation = projectile.rotation
 	bullet.collision = projectile.collision
+	bullet.collision_shift = projectile.collision_shift
 	bullet.collision_rot = projectile.collision_rot
+	bullet.attack_size = projectile.attack_size
+	bullet.attacker = shadow
 	set_target(bullet)
 	rootScene.add_child(bullet)
 
