@@ -7,6 +7,8 @@ var max_hp = 10
 var hp = 1 
 var time = 0
 
+var init_attacks = ["ice_spear", "lightning_bird", "iron_slash"]
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -23,6 +25,7 @@ signal show_menu()
 
 func _ready():
 	_on_hurt_box_hurt(0)
+	$Attack.init_attacks = init_attacks
 	#connect("show_menu",Callable(gom, "show_menu"))
 @onready var pivot = $Pivot
 @onready var animation_player = $AnimationPlayer
@@ -96,5 +99,13 @@ func save_run():
 	shdwtimeline.init_attacks = ["res://Attacks/Projectiles/iceSpear.tres", "res://Attacks/Projectiles/ironSlash.tres", "res://Attacks/Projectiles/lightningBird.tres"]
 	shdwtimeline.time_of_death = time
 	ResourceSaver.save(shdwtimeline, "res://Shadow/Timelines/last_game_timeline.tres")
+
 func change_deadEnemiesCounter(numberOfDeadEnemies):
 	deadEnemiesCounter.text = str(numberOfDeadEnemies)
+
+func upgrade_attack(attack):
+	if $Attack.upgrade_attack(attack) == 1:
+		shdwtimeline.timestamps.append(time)
+		shdwtimeline.attack_array.append(attack)
+	else:
+		return -1

@@ -7,6 +7,9 @@ var projectiles = {
 	"iron_slash":load("res://Attacks/Projectiles/ironSlash.tres")
 }
 
+var init_attacks = ["ice_spear", "lightning_bird", "iron_slash"]
+var spawners := {}
+
 var iceSpear : Node2D
 var lightningBird : Node2D
 var ironSlash : Node2D
@@ -14,9 +17,8 @@ var ray_number = 16
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	iceSpear = create_spawner("ice_spear")
-	lightningBird = create_spawner("lightning_bird")
-	ironSlash = create_spawner("iron_slash")
+	for att in init_attacks:
+		spawners[att] = create_spawner(att)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -34,3 +36,5 @@ func get_closest_enemy():
 	return %rayEnemyDetector.get_closest_enemy()
 	
 
+func upgrade_attack(attack):
+	return spawners[attack].upgrade_attack()

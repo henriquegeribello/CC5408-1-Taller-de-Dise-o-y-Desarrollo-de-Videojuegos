@@ -99,3 +99,9 @@ func get_closest_enemy():
 func check_for_enemies():
 	return enemyDetect.check_for_enemies()
 
+func upgrade_attack():
+	if level == projectile.max_level:
+		return -1
+	projectile = projectile.nextlvl
+	level += 1
+	return 1
