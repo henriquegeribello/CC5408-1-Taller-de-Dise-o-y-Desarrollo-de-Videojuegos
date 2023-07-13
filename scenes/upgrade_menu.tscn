@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxpviy8dew14x"]
+[gd_scene load_steps=8 format=3 uid="uid://bxpviy8dew14x"]
 
 [ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="1_ax8pc"]
 [ext_resource type="Script" path="res://scenes/upgrade_menu.gd" id="2_7pymx"]
 [ext_resource type="Texture2D" uid="uid://bw3htvfpjmnxk" path="res://assets/buttons/ice_button.tres" id="2_c0idh"]
-[ext_resource type="Texture2D" uid="uid://ceb8ju04g0618" path="res://assets/buttons/thunder_button.tres" id="3_tlo2q"]
 [ext_resource type="Texture2D" uid="uid://cm5skgmledkn5" path="res://assets/buttons/melee_button.tres" id="5_3clpd"]
+[ext_resource type="Texture2D" uid="uid://cwccthb6ot2xg" path="res://assets/buttons/lightning_button.tres" id="5_dnhj7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fdl1"]
 bg_color = Color(0.447059, 0.623529, 0.839216, 0.721569)
@@ -13,15 +13,17 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="LabelSettings" id="LabelSettings_gmi72"]
+
 [node name="upgrade_menu" type="MarginContainer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -212.5
+offset_left = -212.0
 offset_top = -113.0
-offset_right = 212.5
+offset_right = 213.0
 offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -53,28 +55,38 @@ text = "Level Up!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
-alignment = 1
+text = "Choose an attack to upgrade."
+label_settings = SubResource("LabelSettings_gmi72")
 
-[node name="iceButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="iceButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_ax8pc")
-texture_normal = ExtResource("2_c0idh")
-stretch_mode = 3
+action_mode = 0
+text = "Ice Spear"
+icon = ExtResource("2_c0idh")
+flat = true
 
-[node name="thunderButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="thunderButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_ax8pc")
-texture_normal = ExtResource("3_tlo2q")
-stretch_mode = 5
+action_mode = 0
+text = "Lightning Shot"
+icon = ExtResource("5_dnhj7")
+flat = true
 
-[node name="meleeButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="meleeButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_ax8pc")
-texture_normal = ExtResource("5_3clpd")
-stretch_mode = 3
+action_mode = 0
+text = "Iron Slash"
+icon = ExtResource("5_3clpd")
+flat = true
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/iceButton" to="." method="_on_ice_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/thunderButton" to="." method="_on_thunder_btn_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/meleeButton" to="." method="_on_melee_btn_pressed"]

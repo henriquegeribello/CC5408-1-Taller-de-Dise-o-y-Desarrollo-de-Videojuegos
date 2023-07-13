@@ -4,22 +4,36 @@ extends MarginContainer
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var player_attack_node = player.get_node("Attack")
 @onready var init_attacks = player_attack_node.init_attacks
-@onready var iceButton = %iceButton
-@onready var thunderButton = %thunderButton
-@onready var meleeButton = %meleeButton
+@onready var iceButton = $iceButton
+@onready var thunderButton = $thunderButton
+@onready var meleeButton = $meleeButton
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	iceButton.pressed.connect(_on_upgrade_btn_pressed.bind("ice_spear"))
-	thunderButton.pressed.connect(_on_upgrade_btn_pressed.bind("lightning_bird"))
-	meleeButton.pressed.connect(_on_upgrade_btn_pressed.bind("iron_slash"))
-
+	player.level_up.connect(_on_level_up)
+	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-func _on_upgrade_btn_pressed(attack):
+func _on_level_up():
+	show()
+	get_tree().paused = true
+
+func _on_upgrade_btn_pressed(attack : String):
+	print("upgrade")
 	player_attack_node.upgrade_attack(attack)
 	
+	hide()
+	get_tree().paused = false
+
+func _on_ice_btn_pressed():
+	_on_upgrade_btn_pressed("ice_spear")
+
+func _on_thunder_btn_pressed():
+	_on_upgrade_btn_pressed("lightning_bird")
+	
+func _on_melee_btn_pressed():
+	_on_upgrade_btn_pressed("iron_slash")

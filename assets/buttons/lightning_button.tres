@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cwccthb6ot2xg"]
+
+[ext_resource type="Texture2D" uid="uid://tpnln4olmkrh" path="res://assets/attacks/Holy VFX 01 Repeatable.png" id="1_yc8wf"]
+
+[resource]
+atlas = ExtResource("1_yc8wf")
+region = Rect2(66.1083, -0.63401, 35.023, 32.3897)

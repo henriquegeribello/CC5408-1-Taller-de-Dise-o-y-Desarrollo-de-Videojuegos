@@ -6,7 +6,7 @@ class_name Projectile
 @export var base_ammo: int
 @export var reload_speed: float
 @export var fire_rate: float
-@export var nextlvl : Projectile
+@export var nextlvl : Projectile = self
 
 # Bullet mechanic handling params
 @export var level: int
