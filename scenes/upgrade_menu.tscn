@@ -25,10 +25,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -212.0
-offset_top = -113.0
-offset_right = 213.0
-offset_bottom = 113.0
+offset_left = -213.0
+offset_top = -179.0
+offset_right = 214.0
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ax8pc")
@@ -44,13 +44,14 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_8fdl1")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 30
 
 [node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
+theme = ExtResource("1_ax8pc")
 alignment = 1
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
@@ -70,7 +71,6 @@ theme = ExtResource("1_ax8pc")
 action_mode = 0
 text = "Ice Spear"
 icon = ExtResource("2_c0idh")
-flat = true
 script = ExtResource("4_p8wt5")
 
 [node name="thunderButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
@@ -79,7 +79,6 @@ theme = ExtResource("1_ax8pc")
 action_mode = 0
 text = "Lightning Shot"
 icon = ExtResource("5_dnhj7")
-flat = true
 script = ExtResource("6_wod0v")
 attack_name = "lightning_bird"
 
@@ -89,7 +88,6 @@ theme = ExtResource("1_ax8pc")
 action_mode = 0
 text = "Iron Slash"
 icon = ExtResource("5_3clpd")
-flat = true
 script = ExtResource("8_0rw1m")
 attack_name = "iron_slash"
 
