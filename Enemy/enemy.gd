@@ -3,7 +3,8 @@ class_name Enemy
 
 @export var movement_speed = 30.0
 
-@export var hp = 1
+@export var hp := 1
+@export var xp_reward := 1
 
 @onready var player = get_tree().get_first_node_in_group("player") 
 @onready var EnemySpawner = get_parent()
@@ -23,6 +24,7 @@ func _on_hurt_box_hurt(damage):
 		EnemySpawner.number_of_enemies_slayed_by_the_player+=1
 		
 		player.change_deadEnemiesCounter(EnemySpawner.number_of_enemies_slayed_by_the_player)
+		player.add_xp()
 		
 
 		queue_free()

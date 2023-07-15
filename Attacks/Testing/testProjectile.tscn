@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://v217ym0g5nou"]
+
+[ext_resource type="PackedScene" uid="uid://bx231jeqxxn6q" path="res://Attacks/genericProjectile.tscn" id="1_qdo03"]
+[ext_resource type="Texture2D" uid="uid://b58w8ytceabpu" path="res://assets/attacks/Smear 01 Horizontal 1.png" id="2_c4ftu"]
+[ext_resource type="Shape2D" uid="uid://cps5hype8pjqo" path="res://Attacks/Collisions/melee_capsule_col.tres" id="3_di05g"]
+
+[node name="testProjectile" type="Node2D"]
+
+[node name="genericProjectile" parent="." instance=ExtResource("1_qdo03")]
+
+[node name="Sprite2D" parent="genericProjectile" index="0"]
+texture = ExtResource("2_c4ftu")
+hframes = 5
+frame = 2
+
+[node name="CollisionShape2D" parent="genericProjectile/HitBox" index="0"]
+rotation = 1.5708
+shape = ExtResource("3_di05g")
+
+[editable path="genericProjectile"]
+[editable path="genericProjectile/HitBox"]

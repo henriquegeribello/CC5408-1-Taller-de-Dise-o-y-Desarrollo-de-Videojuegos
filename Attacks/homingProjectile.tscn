@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bix7clog51xa6"]
+
+[ext_resource type="Script" path="res://Attacks/homingProjectile.gd" id="1_7savv"]
+[ext_resource type="PackedScene" uid="uid://ddhpvif8ronsj" path="res://Utlity/hitbox.tscn" id="1_qe2g7"]
+
+[node name="homingProjectile" type="Node2D"]
+script = ExtResource("1_7savv")
+
+[node name="flightTimer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="HitBox" parent="." instance=ExtResource("1_qe2g7")]
+collision_layer = 4
+collision_mask = 4
+
+[connection signal="timeout" from="flightTimer" to="." method="_on_flight_timer_timeout"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

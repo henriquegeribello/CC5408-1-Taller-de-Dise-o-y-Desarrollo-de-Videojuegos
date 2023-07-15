@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bw3htvfpjmnxk"]
+
+[ext_resource type="Texture2D" uid="uid://guqgrux64jfo" path="res://assets/attacks/IceVFX 1 Repeatable.png" id="1_lmgy1"]
+
+[resource]
+atlas = ExtResource("1_lmgy1")
+region = Rect2(44.418, 0.331467, 43.7057, 32.3746)
