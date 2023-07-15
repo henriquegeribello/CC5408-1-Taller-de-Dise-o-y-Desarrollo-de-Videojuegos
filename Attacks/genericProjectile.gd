@@ -39,11 +39,12 @@ var sprite_rotation = 0
 var frame = 0.0
 var frame_speed = 1.0
 
+var attacker : Node2D
 
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var flightTimer = $flightTimer
-@onready var attacker : Node2D = player
+
 
 
 func _ready():
