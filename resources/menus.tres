@@ -10,6 +10,10 @@ bg_color = Color(0.682353, 0.0823529, 0.831373, 0.529412)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iy5g8"]
 bg_color = Color(0.447059, 0.623529, 0.839216, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [resource]
 Button/colors/font_outline_color = Color(0.231373, 0.196078, 0.290196, 1)
