@@ -4,9 +4,10 @@ extends MarginContainer
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var player_attack_node = player.get_node("Attack")
 @onready var init_attacks = player_attack_node.init_attacks
-@onready var iceButton = $iceButton
-@onready var thunderButton = $thunderButton
-@onready var meleeButton = $meleeButton
+@onready var ice_button = $PanelContainer/MarginContainer/HBoxContainer/iceButton
+@onready var thunder_button = $PanelContainer/MarginContainer/HBoxContainer/thunderButton
+@onready var melee_button = $PanelContainer/MarginContainer/HBoxContainer/meleeButton
+
 
 
 # Called when the node enters the scene tree for the first time.
