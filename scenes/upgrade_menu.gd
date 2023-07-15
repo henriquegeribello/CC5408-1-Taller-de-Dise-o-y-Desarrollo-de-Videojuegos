@@ -21,9 +21,9 @@ func _process(delta):
 	pass
 
 func _on_level_up():
-	iceButton.tooltip_text = get_upgrade_tooltip(iceButton.attack_name)
-	thunderButton.tooltip_text = get_upgrade_tooltip(thunderButton.attack_name)
-	meleeButton.tooltip_text = get_upgrade_tooltip(meleeButton.attack_name)
+	ice_button.tooltip_text = get_upgrade_tooltip(ice_button.attack_name)
+	thunder_button.tooltip_text = get_upgrade_tooltip(thunder_button.attack_name)
+	melee_button.tooltip_text = get_upgrade_tooltip(melee_button.attack_name)
 	show()
 	get_tree().paused = true
 
