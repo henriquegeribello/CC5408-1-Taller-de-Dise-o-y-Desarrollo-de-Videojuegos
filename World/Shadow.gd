@@ -1,10 +1,13 @@
-extends Sprite2D
+extends Node2D
 
 var movementArray = []
 var movementCounter = 0
 
 var timeline : ShadowTimeline
 var mov : Vector2
+@onready var animation_tree = $AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
+@onready var pivot = $pivot
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +34,13 @@ func _process(delta):
 	position += mov
 	movementCounter+=1
 	movementCounter = movementCounter%movementArray.size()
+	if mov:
+		playback.travel("run")
+		if mov.x:
+			pivot.scale.x = abs(pivot.scale.x)*sign(mov.x)
+	else:
+		playback.travel("idle")
+		
 
 
 func _on_death_timer_timeout():

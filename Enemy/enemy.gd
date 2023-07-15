@@ -8,14 +8,16 @@ class_name Enemy
 
 @onready var player = get_tree().get_first_node_in_group("player") 
 @onready var EnemySpawner = get_parent()
+@onready var sprite_2d = $Sprite2D
 
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
-
+var prev_pos = [0,0]
 func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction*movement_speed
 	move_and_slide()
+	#scale.x = abs(scale.x) * sign(direction.x)
 
 func _on_hurt_box_hurt(damage):
 	hp -= damage
