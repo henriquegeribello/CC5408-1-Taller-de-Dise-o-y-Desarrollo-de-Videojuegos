@@ -274,22 +274,23 @@ text = "00:00"
 [node name="deadEnemiesCounter" type="Label" parent="GUI"]
 z_index = 5
 layout_mode = 0
-offset_left = 133.0
-offset_top = -81.0
-offset_right = 177.0
-offset_bottom = -62.0
+offset_left = 108.5
+offset_top = -86.0
+offset_right = 152.5
+offset_bottom = -67.0
 theme = ExtResource("6_c71uy")
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 1
 theme_override_font_sizes/font_size = 13
-text = "0"
+text = "0/200"
 
 [node name="Sprite2D" type="Sprite2D" parent="GUI"]
-position = Vector2(202, -75)
+position = Vector2(94, -79.5)
 scale = Vector2(0.368125, 0.356667)
 texture = ExtResource("8_fr74o")
+hframes = 4
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
