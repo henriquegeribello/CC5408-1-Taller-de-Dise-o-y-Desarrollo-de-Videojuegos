@@ -19,7 +19,7 @@ func _ready():
 		$Attack.attack_event_timeline = timeline.events
 		$Attack.attack_timestamps = timeline.timestamps
 		
-		$deathTimer.wait_time = timeline.time_of_death
+		$deathTimer.wait_time = timeline.time_of_death/1000
 		$deathTimer.start()
 		
 		

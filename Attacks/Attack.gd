@@ -37,4 +37,8 @@ func get_closest_enemy():
 	
 
 func upgrade_attack(attack):
+	projectiles[attack] = projectiles[attack].nextlvl
 	return spawners[attack].upgrade_attack()
+
+func get_upgrade_tooltip(attack):
+	return projectiles[attack].upgrade_desc
