@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=3 format=3 uid="uid://dv102bqgdiecn"]
+
+[ext_resource type="Script" path="res://Attacks/Projectiles/Projectile.gd" id="1_shdei"]
+[ext_resource type="Texture2D" uid="uid://b58w8ytceabpu" path="res://assets/attacks/Smear 01 Horizontal 1.png" id="2_5fadq"]
+
+[resource]
+script = ExtResource("1_shdei")
+max_level = 3
+base_ammo = 2
+reload_speed = 1.0
+fire_rate = 1.0
+level = 1
+element = 3
+type = 3
+mov = Vector2(0, 0)
+hp = 1
+speed = 100
+knockback = 100
+attack_size = 3.0
+damage = 5
+flight_time = 0.5
+collision = "res://Attacks/Collisions/melee_capsule_col.tres"
+collision_rot = -1.5708
+collision_shift = Vector2(0, 0)
+shift = Vector2(1, 1)
+sprite = ExtResource("2_5fadq")
+hframes = 5
+vframes = 1
+rotation = 0
+name = "Iron Slash"
+description = "A basic melee attack"

@@ -1,19 +1,24 @@
 extends Node2D
 
-enum {simple, homing, fixed}
+enum {simple, homing, fixed, melee}
 var projectile_node = preload("res://Attacks/genericProjectile.tscn")
+
+var simple_projectile_node = preload("res://Attacks/simpleProjectile.tscn")
+var homing_projectile_node = preload("res://Attacks/homingProjectile.tscn")
+var melee_projectile_node = preload("res://Attacks/meleeProjectile.tscn")
+
 var projectile : Projectile
 var ammo : int
 var level = 1
 
 var available_enemies = []
+var enemyDetect : EnemyDetector
 var player_mov = Vector2(1, 0)
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var rootScene = get_tree().get_first_node_in_group("root")
 @onready var reloadTimer = $reloadTimer
 @onready var attackTimer = $attackTimer
-@onready var enemyDetect = $enemyDetection 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,7 +34,7 @@ func _process(delta):
 
 func _on_attack_timer_timeout():
 	if ammo > 0:
-		if not available_enemies.is_empty():
+		if check_for_enemies():
 			bullet_init()
 			ammo -= 1
 		attackTimer.start()
@@ -45,7 +50,17 @@ func _on_reload_timer_timeout():
 	attackTimer.start()
 
 func bullet_init():
-	var bullet = projectile_node.instantiate()
+	var bullet : genericProjectile
+	match projectile.type:
+		simple:
+			bullet = simple_projectile_node.instantiate()
+		homing:
+			bullet = homing_projectile_node.instantiate()
+		melee:
+			bullet = melee_projectile_node.instantiate()
+		_:
+			bullet = projectile_node.intantiate()
+		
 	bullet.type = projectile.type
 	bullet.level = level
 	bullet.hp = projectile.hp
@@ -58,38 +73,35 @@ func bullet_init():
 	bullet.vframes = projectile.vframes
 	bullet.sprite_rotation = projectile.rotation
 	bullet.collision = projectile.collision
+	bullet.collision_shift = projectile.collision_shift
 	bullet.collision_rot = projectile.collision_rot
+	bullet.attack_size = projectile.attack_size
+	bullet.attacker = player
 	set_target(bullet)
 	rootScene.add_child(bullet)
 
 func set_target(bullet):
 	match bullet.type:
-		simple:
+		homing:
+			var enmy = get_closest_enemy()
+			if enmy != null:
+				bullet.enemy_target = enmy
+		fixed:
+			bullet.mov = projectile.mov
+		_:
 			if player.velocity != Vector2.ZERO:
 				player_mov = player.velocity.normalized()
 			bullet.target_pos = player_mov
-		homing:
-			if (available_enemies.size()):
-				var en = get_closest_enemy()
-				bullet.enemy_target = en
-		fixed:
-			bullet.mov = projectile.mov
 
 func get_closest_enemy():
-	var ret = available_enemies[0]
-	var dist = ret.global_position.distance_squared_to(player.global_position)
-	for en in available_enemies:
-		if en.global_position.distance_squared_to(player.global_position) < dist:
-			ret = en
-			dist = en.global_position.distance_squared_to(player.global_position)
-	return ret
+	return enemyDetect.get_closest_enemy()
+	
+func check_for_enemies():
+	return enemyDetect.check_for_enemies()
 
-
-func _on_body_entered(body):
-	if body is Enemy and not available_enemies.has(body):
-		available_enemies.append(body)
-
-
-func _on_body_exited(body):
-	if body in available_enemies:
-		available_enemies.erase(body)
+func upgrade_attack():
+	if level == projectile.max_level:
+		return -1
+	projectile = projectile.nextlvl
+	level += 1
+	return 1

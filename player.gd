@@ -7,6 +7,11 @@ var max_hp = 10
 var hp = 1 
 var time = 0
 
+var lvlup_exp = 10
+var curr_exp = 0
+
+var init_attacks = ["ice_spear", "lightning_bird", "iron_slash"]
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
@@ -19,10 +24,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var gom = get_node("GameOverMenu")
 
 signal show_menu()
-
+signal level_up
 
 func _ready():
 	_on_hurt_box_hurt(0)
+	$Attack.init_attacks = init_attacks
 	#connect("show_menu",Callable(gom, "show_menu"))
 @onready var pivot = $Pivot
 @onready var animation_player = $AnimationPlayer
@@ -46,14 +52,13 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		shadw.global_position = global_position
-		shadw.movementArray = movement_array
-		shadw.movementCounter = 0	
-		
-	
-	
-	
+	#if Input.is_action_just_pressed("ui_accept"):
+	#	shadw.global_position = global_position
+	#	shadw.movementArray = movement_array
+	#	shadw.movementCounter = 0
+	#	save_run()	
+
+
 func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
@@ -76,6 +81,7 @@ func _on_hurt_box_hurt(damage):
 	healthBar.value = hp
 	if hp <= 0:
 		#emit_signal("show_menu")
+		save_run()
 		gom.show_menu()
 	print(hp)
 
@@ -91,5 +97,29 @@ func change_time(argtime = 0):
 		seconds = str(0,seconds)
 	lbl_timer.text = str(minutes,":",seconds)
 	
+func save_run():
+	shdwtimeline.movement_array = movement_array
+	shdwtimeline.init_attacks = ["res://Attacks/Projectiles/iceSpear.tres", "res://Attacks/Projectiles/ironSlash.tres", "res://Attacks/Projectiles/lightningBird.tres"]
+	shdwtimeline.time_of_death = time
+	ResourceSaver.save(shdwtimeline, "res://Shadow/Timelines/last_game_timeline.tres")
+
 func change_deadEnemiesCounter(numberOfDeadEnemies):
 	deadEnemiesCounter.text = str(numberOfDeadEnemies)
+
+func add_xp(xp = 1):
+	curr_exp += xp
+	print("Curr_exp: " + str(curr_exp))
+	
+	if curr_exp >= lvlup_exp:
+		curr_exp = 0
+		lvlup_exp = int(lvlup_exp*1.1)
+		emit_signal("level_up")
+		
+
+func upgrade_attack(attack):
+	if $Attack.upgrade_attack(attack) == 1:
+		shdwtimeline.timestamps.append(time)
+		shdwtimeline.attack_array.append(attack)
+	else:
+		return -1
+

@@ -165,7 +165,7 @@ states/Start/position = Vector2(137.333, 69.3333)
 states/attack/node = SubResource("AnimationNodeAnimation_atxsh")
 states/attack/position = Vector2(556, 60.2222)
 states/walk/node = SubResource("AnimationNodeAnimation_ttpi3")
-states/walk/position = Vector2(376, 59.3333)
+states/walk/position = Vector2(375, 60.2222)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_e8ptn"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_pnvt3"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_sp3oi")]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_h3ip2"]

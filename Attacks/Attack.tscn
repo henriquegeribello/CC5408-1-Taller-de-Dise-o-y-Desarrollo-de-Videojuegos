@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgri5p7bxsnws"]
+[gd_scene load_steps=3 format=3 uid="uid://cgri5p7bxsnws"]
 
 [ext_resource type="Script" path="res://Attacks/Attack.gd" id="1_griug"]
+[ext_resource type="PackedScene" uid="uid://byj266x45prpb" path="res://Attacks/rayEnemyDetector.tscn" id="2_hlxxh"]
 
 [node name="Attack" type="Node2D"]
 script = ExtResource("1_griug")
+
+[node name="rayEnemyDetector" parent="." instance=ExtResource("2_hlxxh")]
+unique_name_in_owner = true
