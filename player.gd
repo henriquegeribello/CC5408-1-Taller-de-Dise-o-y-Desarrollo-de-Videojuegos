@@ -13,6 +13,7 @@ var lvlup_exp = 10
 var curr_exp = 0
 
 var init_attacks = ["ice_spear", "lightning_bird", "iron_slash"]
+var enemies_to_defeat = 50
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -24,6 +25,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var shadw = get_tree().get_first_node_in_group("Shadow")
 @onready var healthBar = get_node("%HealthBar")
 @onready var gom = get_node("GameOverMenu")
+@onready var wm = get_node("WinMenu")
 
 signal show_menu()
 signal level_up
@@ -32,6 +34,7 @@ func _ready():
 	_on_hurt_box_hurt(0)
 	$Attack.init_attacks = init_attacks
 	#connect("show_menu",Callable(gom, "show_menu"))
+	deadEnemiesCounter.text = "0/"+str(enemies_to_defeat)
 @onready var pivot = $Pivot
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
@@ -106,7 +109,9 @@ func save_run():
 	ResourceSaver.save(shdwtimeline, "res://Shadow/Timelines/last_game_timeline.tres")
 
 func change_deadEnemiesCounter(numberOfDeadEnemies):
-	deadEnemiesCounter.text = str(numberOfDeadEnemies)
+	deadEnemiesCounter.text = str(numberOfDeadEnemies)+"/"+str(enemies_to_defeat)
+	if numberOfDeadEnemies >= enemies_to_defeat:
+		wm.show_menu()
 
 func add_xp(xp = 1):
 	curr_exp += xp

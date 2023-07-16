@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgqnobrldogn8"]
+
+[ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="1_5ema6"]
+[ext_resource type="Script" path="res://win_menu.gd" id="2_rf2ef"]
+
+[node name="WinMenu" type="MarginContainer"]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5ema6")
+script = ExtResource("2_rf2ef")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "YOU WiINnN!!!!"
+
+[node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Retry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+z_index = 20
+layout_mode = 2
+text = "Retry
+"

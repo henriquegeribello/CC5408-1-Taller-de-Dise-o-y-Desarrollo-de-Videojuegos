@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxypi7ldrueu8"]
+[gd_scene load_steps=5 format=3 uid="uid://cxypi7ldrueu8"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_8qu51"]
 [ext_resource type="PackedScene" uid="uid://bk88s1l2tfeb0" path="res://World/world.tscn" id="2_fw5vq"]
 [ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="3_1yoev"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bueu"]
+bg_color = Color(0.447059, 0.623529, 0.839216, 1)
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -16,6 +19,7 @@ main_scene = ExtResource("2_fw5vq")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4bueu")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(200, 0)
