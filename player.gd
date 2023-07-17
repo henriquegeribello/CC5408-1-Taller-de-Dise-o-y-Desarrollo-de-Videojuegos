@@ -3,14 +3,15 @@ extends CharacterBody2D
 var movement_speed = 50.0
 var movement_array = []
 
-var max_hp = 10
-var hp = 10
+var max_hp = 15
+var hp = 15
 var time = 0
 
 var start_time_ms : int
 
 var lvlup_exp = 15
 var curr_exp = 0
+var level = 0
 
 var init_attacks = ["ice_spear", "lightning_bird", "iron_slash"]
 
@@ -118,10 +119,11 @@ func change_deadEnemiesCounter(numberOfDeadEnemies):
 
 func add_xp(xp = 1):
 	curr_exp += xp
-	if curr_exp >= lvlup_exp:
+	if curr_exp >= lvlup_exp and level<15:
 		curr_exp = 0
-		lvlup_exp = int(lvlup_exp*1.1)
+		lvlup_exp = int(lvlup_exp*1.3)
 		emit_signal("level_up")
+		level +=1
 		
 
 func upgrade_attack(attack):
