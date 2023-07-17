@@ -3,7 +3,7 @@ extends MarginContainer
 @onready var start = %Start
 @onready var exit = %Exit
 @onready var credits = %Credits
-@onready var back = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/Back
+
 
 @export var main_scene: PackedScene
 

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Projectile" load_steps=3 format=3 uid="uid://17nyc2m0f85h"]
+[gd_resource type="Resource" script_class="Projectile" load_steps=4 format=3 uid="uid://17nyc2m0f85h"]
 
+[ext_resource type="Resource" uid="uid://bob66hmq4f4f7" path="res://Attacks/Projectiles/iceSpear4.tres" id="1_ddypm"]
 [ext_resource type="Script" path="res://Attacks/Projectiles/Projectile.gd" id="1_vtw4f"]
 [ext_resource type="Texture2D" uid="uid://guqgrux64jfo" path="res://assets/attacks/IceVFX 1 Repeatable.png" id="2_bdm5n"]
 
@@ -7,17 +8,17 @@
 script = ExtResource("1_vtw4f")
 max_level = 5
 base_ammo = 2
-reload_speed = 0.5
-fire_rate = 0.2
+reload_speed = 1.8
+fire_rate = 1.0
 level = 1
 element = 1
 type = 0
 mov = Vector2(0, 0)
-hp = 2
+hp = 3
 speed = 132
 knockback = 100
 attack_size = 1.0
-damage = 3
+damage = 2
 flight_time = 10.0
 collision = "res://Attacks/Collisions/capsule_collision.tres"
 collision_rot = -1.5708
@@ -29,6 +30,7 @@ vframes = 1
 rotation = 0
 name = "IceSpear"
 description = "An ice spear that goes through enemies. Fires towards the direction you're moving."
+nextlvl = ExtResource("1_ddypm")
 upgrade_desc = "lvl : 4
 +1 ammo
 +1 strikethrough
