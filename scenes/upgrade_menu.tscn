@@ -66,6 +66,7 @@ text = "Choose an attack to upgrade."
 label_settings = SubResource("LabelSettings_gmi72")
 
 [node name="iceButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_ax8pc")
 action_mode = 0
@@ -74,6 +75,7 @@ icon = ExtResource("2_c0idh")
 script = ExtResource("4_p8wt5")
 
 [node name="thunderButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_ax8pc")
 action_mode = 0
@@ -83,6 +85,7 @@ script = ExtResource("6_wod0v")
 attack_name = "lightning_bird"
 
 [node name="meleeButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_ax8pc")
 action_mode = 0

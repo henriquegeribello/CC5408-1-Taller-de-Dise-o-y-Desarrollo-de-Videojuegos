@@ -6,7 +6,7 @@ class_name Projectile
 @export var base_ammo: int
 @export var reload_speed: float
 @export var fire_rate: float
-@export var nextlvl : Projectile = self
+
 
 # Bullet mechanic handling params
 @export var level: int
@@ -37,6 +37,9 @@ class_name Projectile
 @export var name: String
 @export_multiline var description: String
 
+#upgrade params
+@export var nextlvl : Projectile = self
+@export_multiline var upgrade_desc : String
 
 
 func level_up():

@@ -9,4 +9,4 @@ init_attacks = ["res://Attacks/Projectiles/iceSpear.tres", "res://Attacks/Projec
 attack_array = []
 timestamps = []
 events = []
-time_of_death = 9.0
+time_of_death = 21966.0

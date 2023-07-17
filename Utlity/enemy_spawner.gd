@@ -21,7 +21,7 @@ func _on_timer_timeout():
 		if time >= i.time_start and time <= i.time_end:
 			if i.spawn_delay_counter < i.enemy_spawn_delay:
 				i.spawn_delay_counter +=1
-			elif number_of_enemies_in_la_pantalla  < max_number_of_enemies:
+			elif number_of_enemies_in_la_pantalla < max_number_of_enemies:
 				i.spawn_delay_counter = 0
 				var new_enemy = load(str(i.enemy.resource_path))
 				var counter = 0 
