@@ -39,10 +39,10 @@ func _on_hurt_box_hurt(damage):
 		
 		#_on_animation_player_animation_finished("death")
 		
-func _on_animation_player_animation_finished(anim_name):
-	# Replace with function body.
-	if anim_name == "death":
-		print("ola")#queue_free()
+#func _on_animation_player_animation_finished(anim_name):
+#	# Replace with function body.
+#	if anim_name == "death":
+#		print("ola")#queue_free()
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == "death":
