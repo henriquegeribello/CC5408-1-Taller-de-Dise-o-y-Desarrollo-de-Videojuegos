@@ -160,6 +160,8 @@ transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_
 
 [node name="Ogre" type="CharacterBody2D"]
 script = ExtResource("1_jnfui")
+movement_speed = 50.0
+hp = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 1)

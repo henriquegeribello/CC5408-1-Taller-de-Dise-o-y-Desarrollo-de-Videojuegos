@@ -4,7 +4,7 @@ var movement_speed = 50.0
 var movement_array = []
 
 var max_hp = 10
-var hp = 1 
+var hp = 10
 var time = 0
 
 var start_time_ms : int

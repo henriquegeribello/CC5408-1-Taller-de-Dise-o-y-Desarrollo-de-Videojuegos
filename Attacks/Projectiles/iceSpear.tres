@@ -8,7 +8,7 @@
 script = ExtResource("2_pauch")
 max_level = 5
 base_ammo = 1
-reload_speed = 0.5
+reload_speed = 2.0
 fire_rate = 0.2
 level = 1
 element = 1

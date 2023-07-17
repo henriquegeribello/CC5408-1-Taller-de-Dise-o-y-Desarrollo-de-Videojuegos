@@ -1,37 +1,45 @@
-[gd_scene load_steps=8 format=3 uid="uid://di0rg47j7at1p"]
+[gd_scene load_steps=9 format=3 uid="uid://di0rg47j7at1p"]
 
 [ext_resource type="Script" path="res://Utlity/enemy_spawner.gd" id="1_7gvmm"]
 [ext_resource type="Script" path="res://Utlity/spawn_info.gd" id="2_5bsd0"]
 [ext_resource type="PackedScene" uid="uid://dbsivqsvjeown" path="res://Enemy/enemy.tscn" id="2_upe1n"]
 [ext_resource type="PackedScene" uid="uid://4amb0f1o4imo" path="res://Enemy/Ogre.tscn" id="4_4ns3v"]
 
+[sub_resource type="Resource" id="Resource_8cp38"]
+script = ExtResource("2_5bsd0")
+time_start = 0
+time_end = 20
+enemy = ExtResource("4_4ns3v")
+enemy_num = 1
+enemy_spawn_delay = 1
+
 [sub_resource type="Resource" id="Resource_8mhtg"]
 script = ExtResource("2_5bsd0")
 time_start = 0
-time_end = 5
+time_end = 20
 enemy = ExtResource("2_upe1n")
 enemy_num = 1
-enemy_spawn_delay = 0
+enemy_spawn_delay = 1
 
 [sub_resource type="Resource" id="Resource_f01im"]
 script = ExtResource("2_5bsd0")
-time_start = 4
+time_start = 18
 time_end = 60
 enemy = ExtResource("2_upe1n")
-enemy_num = 8
-enemy_spawn_delay = 0
+enemy_num = 1
+enemy_spawn_delay = 1
 
-[sub_resource type="Resource" id="Resource_8cp38"]
+[sub_resource type="Resource" id="Resource_mjngx"]
 script = ExtResource("2_5bsd0")
-time_start = 2
-time_end = 15
+time_start = 18
+time_end = 60
 enemy = ExtResource("4_4ns3v")
-enemy_num = 4
-enemy_spawn_delay = 0
+enemy_num = 2
+enemy_spawn_delay = 1
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_7gvmm")
-spawns = Array[ExtResource("2_5bsd0")]([SubResource("Resource_8mhtg"), SubResource("Resource_f01im"), SubResource("Resource_8cp38")])
+spawns = Array[ExtResource("2_5bsd0")]([SubResource("Resource_8cp38"), SubResource("Resource_8mhtg"), SubResource("Resource_f01im"), SubResource("Resource_mjngx")])
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
