@@ -6,6 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://ddhpvif8ronsj" path="res://Utlity/hitbox.tscn" id="4_ynjsm"]
 [ext_resource type="Texture2D" uid="uid://co28e3bgmuq1p" path="res://assets/enemies/Monsters_Creatures_Fantasy/Goblin/Run.png" id="5_n56ng"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_krnug"]
+radius = 14.0
+height = 40.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ph788"]
+radius = 14.0
+height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_adlgk"]
+radius = 13.0
+height = 38.0
+
 [sub_resource type="Animation" id="Animation_mmk42"]
 length = 0.001
 tracks/0/type = "value"
@@ -160,18 +172,6 @@ transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_24e8o"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_upmna"]
-radius = 14.0
-height = 40.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5qqm0"]
-radius = 14.0
-height = 44.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1781k"]
-radius = 13.0
-height = 38.0
-
 [node name="StrongerOgre" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_s3fxi")
 movement_speed = 62.0
@@ -181,8 +181,30 @@ xp_reward = 5
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.823529, 0, 0.156863, 1)
 position = Vector2(1, 1)
-texture = ExtResource("2_qg5ty")
-hframes = 4
+texture = ExtResource("5_n56ng")
+hframes = 8
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 9)
+shape = SubResource("CapsuleShape2D_krnug")
+
+[node name="HurtBox" parent="." groups=["enemy"] instance=ExtResource("3_qvphy")]
+position = Vector2(1, 8)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CapsuleShape2D_ph788")
+
+[node name="HitBox" parent="." instance=ExtResource("4_ynjsm")]
+position = Vector2(1, 5)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(1, 4)
+shape = SubResource("CapsuleShape2D_adlgk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -194,28 +216,6 @@ tree_root = SubResource("AnimationNodeStateMachine_nsyud")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_24e8o")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 9)
-shape = SubResource("CapsuleShape2D_upmna")
-
-[node name="HurtBox" parent="." groups=["enemy"] instance=ExtResource("3_qvphy")]
-position = Vector2(1, 8)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(1, 1)
-shape = SubResource("CapsuleShape2D_5qqm0")
-
-[node name="HitBox" parent="." instance=ExtResource("4_ynjsm")]
-position = Vector2(1, 5)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(1, 4)
-shape = SubResource("CapsuleShape2D_1781k")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 
