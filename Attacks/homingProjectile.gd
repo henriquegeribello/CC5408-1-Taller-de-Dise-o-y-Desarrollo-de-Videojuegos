@@ -18,6 +18,10 @@ func _ready():
 	flightTimer.start()
 	
 	frame_speed = 0.2*30
+	
+	if is_instance_valid(enemy_target):
+		var enemy_hurtbox = enemy_target.get_node("HurtBox")
+		enemy_hurtbox.connect("hurt", enemy_hit)
 
 func _physics_process(delta):
 	if is_instance_valid(enemy_target):

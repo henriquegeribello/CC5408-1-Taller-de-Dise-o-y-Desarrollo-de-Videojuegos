@@ -8,16 +8,16 @@
 [ext_resource type="Texture2D" uid="uid://c8q4xgkqx3v6k" path="res://assets/enemies/Monsters_Creatures_Fantasy/Mushroom/Run.png" id="6_oo3g1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynnxi"]
-radius = 32.6667
-height = 110.667
+radius = 18.6667
+height = 50.6667
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62df4"]
-radius = 36.0
-height = 116.0
+radius = 30.6667
+height = 93.3333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ykiu"]
-radius = 36.0
-height = 113.333
+radius = 34.6667
+height = 110.667
 
 [sub_resource type="Animation" id="Animation_6n76r"]
 length = 0.001
@@ -201,7 +201,7 @@ hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(2, 20)
+position = Vector2(6, 0)
 shape = SubResource("CapsuleShape2D_ynnxi")
 
 [node name="HurtBox" parent="." groups=["hurtbox"] instance=ExtResource("3_vaooa")]
@@ -209,17 +209,16 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(3.33333, 19.3333)
+position = Vector2(0.666666, 31.3333)
 shape = SubResource("CapsuleShape2D_62df4")
 
 [node name="HitBox" parent="." instance=ExtResource("4_4j1vk")]
-visible = false
 position = Vector2(-2, -3.33333)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(4.66666, 22.6667)
+position = Vector2(4, 30.6667)
 shape = SubResource("CapsuleShape2D_8ykiu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
