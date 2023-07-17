@@ -22,7 +22,7 @@ func _physics_process(_delta):
 
 func _on_hurt_box_hurt(damage):
 	hp -= damage
-	#playback.travel("take hit")
+	playback.travel("take hit")
 	if hp <= 0:
 		EnemySpawner.number_of_enemies_in_la_pantalla-=1
 		EnemySpawner.number_of_enemies_slayed_by_the_player+=1
