@@ -13,7 +13,6 @@ var angle = Vector2.ZERO
 @onready var player = get_tree().get_first_node_in_group("player")
 
 func _ready():
-	print(target)
 	angle = global_position.direction_to(target)
 	rotation = angle.angle()
 

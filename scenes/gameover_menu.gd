@@ -10,12 +10,10 @@ func _ready():
 	hide()# Replace with function body.
 
 func show_menu():
-	print("show")
 	show()
 	get_tree().paused = true
 
 func _on_retry_pressed():
-	print('foi presed')
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 	

@@ -7,7 +7,6 @@ class_name AttackUpgradeButton
 
 
 func _on_button_pressed():
-	print("upgrade pressed")
 	upgradeMenu._on_upgrade_btn_pressed(attack_name)
 
 func _make_custom_tooltip(for_text):

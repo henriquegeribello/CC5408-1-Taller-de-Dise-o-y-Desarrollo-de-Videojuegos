@@ -30,11 +30,12 @@ func _on_timer_timeout():
 					enemy_spawn.global_position= get_random_position()
 					add_child(enemy_spawn)
 					number_of_enemies_in_la_pantalla  +=1
+					print(number_of_enemies_in_la_pantalla)
 					counter +=1
 	emit_signal("changetime", time)
 
 func get_random_position():
-	var vpr = get_viewport_rect().size * randf_range(1.1,1.4)
+	var vpr = get_viewport_rect().size * randf_range(1.1,1.4) *1.5
 	var top_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y - vpr.y/2)
 	var top_right = Vector2(player.global_position.x + vpr.x/2, player.global_position.y - vpr.y/2)
 	var bottom_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y + vpr.y/2)
