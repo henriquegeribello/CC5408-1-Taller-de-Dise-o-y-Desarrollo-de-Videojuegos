@@ -1,10 +1,10 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export var movement_speed = 30.0
+@export var movement_speed = 15.0
 
-@export var hp := 3
-@export var xp_reward := 1
+@export var hp := 80
+@export var xp_reward := 100
 
 @onready var player = get_tree().get_first_node_in_group("player") 
 @onready var EnemySpawner = get_parent()

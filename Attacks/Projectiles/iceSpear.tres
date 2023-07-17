@@ -8,13 +8,13 @@
 script = ExtResource("2_pauch")
 max_level = 5
 base_ammo = 1
-reload_speed = 2.0
+reload_speed = 2.5
 fire_rate = 0.2
 level = 1
 element = 1
 type = 0
 mov = Vector2(0, 0)
-hp = 1
+hp = 2
 speed = 120
 knockback = 100
 attack_size = 1.0

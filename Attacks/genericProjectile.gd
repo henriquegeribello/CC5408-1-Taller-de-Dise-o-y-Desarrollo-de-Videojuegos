@@ -92,7 +92,6 @@ func enemy_hit(charge = 1):
 	hp -= charge
 	if hp <= 0:
 		queue_free()
-		
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("hurtbox"):

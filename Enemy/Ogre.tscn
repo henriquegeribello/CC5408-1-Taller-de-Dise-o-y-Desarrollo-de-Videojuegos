@@ -216,7 +216,7 @@ graph_offset = Vector2(0, 69.8772)
 
 [node name="Ogre" type="CharacterBody2D"]
 script = ExtResource("1_jnfui")
-movement_speed = 60.0
+movement_speed = 52.0
 hp = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

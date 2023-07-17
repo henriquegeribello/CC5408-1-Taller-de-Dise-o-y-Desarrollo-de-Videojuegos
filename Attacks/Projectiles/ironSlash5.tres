@@ -7,8 +7,8 @@
 script = ExtResource("1_njo6r")
 max_level = 5
 base_ammo = 2
-reload_speed = 0.5
-fire_rate = 0.5
+reload_speed = 0.3
+fire_rate = 0.3
 level = 1
 element = 3
 type = 3

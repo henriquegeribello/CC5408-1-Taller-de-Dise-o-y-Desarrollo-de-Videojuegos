@@ -6,9 +6,9 @@
 [resource]
 script = ExtResource("1_nc1wm")
 max_level = 5
-base_ammo = 4
-reload_speed = 1.0
-fire_rate = 0.67
+base_ammo = 6
+reload_speed = 0.8
+fire_rate = 0.01
 level = 1
 element = 2
 type = 1
@@ -17,7 +17,7 @@ hp = 1
 speed = 132
 knockback = 100
 attack_size = 1.0
-damage = 7
+damage = 2
 flight_time = 10.0
 collision = "res://Attacks/Collisions/capsule_collision.tres"
 collision_rot = -1.5708

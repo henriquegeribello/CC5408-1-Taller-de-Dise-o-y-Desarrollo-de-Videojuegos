@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bk88s1l2tfeb0"]
+[gd_scene load_steps=27 format=3 uid="uid://bk88s1l2tfeb0"]
 
 [ext_resource type="Texture2D" uid="uid://qehda634lpl4" path="res://dirt_full_new.png" id="1_l10io"]
 [ext_resource type="PackedScene" uid="uid://do8oqsdg258a8" path="res://player.tscn" id="2_nbq3s"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://dbsivqsvjeown" path="res://Enemy/enemy.tscn" id="10_74mmy"]
 [ext_resource type="Script" path="res://Utlity/spawn_info.gd" id="11_bup4v"]
 [ext_resource type="PackedScene" uid="uid://4amb0f1o4imo" path="res://Enemy/Ogre.tscn" id="12_p0qwj"]
+[ext_resource type="PackedScene" uid="uid://dkgp20wc0ildq" path="res://Enemy/strongerEnemy.tscn" id="13_wfd3v"]
+[ext_resource type="PackedScene" uid="uid://ciypp25t8wlgq" path="res://Enemy/StrongerOgre.tscn" id="14_t0aln"]
+[ext_resource type="PackedScene" uid="uid://qu6f7sjtcchk" path="res://Enemy/MushroomBoss.tscn" id="15_xw51l"]
 
 [sub_resource type="Resource" id="Resource_62koq"]
 script = ExtResource("11_bup4v")
@@ -44,6 +47,62 @@ time_end = 60
 enemy = ExtResource("12_p0qwj")
 enemy_num = 2
 enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_lsfon"]
+script = ExtResource("11_bup4v")
+time_start = 58
+time_end = 110
+enemy = ExtResource("10_74mmy")
+enemy_num = 3
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_aiqd1"]
+script = ExtResource("11_bup4v")
+time_start = 58
+time_end = 110
+enemy = ExtResource("12_p0qwj")
+enemy_num = 2
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_noekp"]
+script = ExtResource("11_bup4v")
+time_start = 85
+time_end = 190
+enemy = ExtResource("13_wfd3v")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_ygw42"]
+script = ExtResource("11_bup4v")
+time_start = 85
+time_end = 190
+enemy = ExtResource("14_t0aln")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_0oisb"]
+script = ExtResource("11_bup4v")
+time_start = 130
+time_end = 190
+enemy = ExtResource("13_wfd3v")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_gsdfb"]
+script = ExtResource("11_bup4v")
+time_start = 130
+time_end = 270
+enemy = ExtResource("14_t0aln")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_hdhbs"]
+script = ExtResource("11_bup4v")
+time_start = 100
+time_end = 300
+enemy = ExtResource("15_xw51l")
+enemy_num = 1
+enemy_spawn_delay = 400
 
 [node name="World" type="Node2D" groups=["root"]]
 
@@ -99,4 +158,4 @@ size_flags_horizontal = 4
 [node name="Shadow" parent="." instance=ExtResource("4_3alnl")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_gyoow")]
-spawns = Array[ExtResource("11_bup4v")]([SubResource("Resource_62koq"), SubResource("Resource_augoa"), SubResource("Resource_c1kfw"), SubResource("Resource_vg421")])
+spawns = Array[ExtResource("11_bup4v")]([SubResource("Resource_62koq"), SubResource("Resource_augoa"), SubResource("Resource_c1kfw"), SubResource("Resource_vg421"), SubResource("Resource_lsfon"), SubResource("Resource_aiqd1"), SubResource("Resource_noekp"), SubResource("Resource_ygw42"), SubResource("Resource_0oisb"), SubResource("Resource_gsdfb"), SubResource("Resource_hdhbs")])
