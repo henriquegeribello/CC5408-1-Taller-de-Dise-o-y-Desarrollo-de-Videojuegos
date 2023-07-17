@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dkgp20wc0ildq"]
 
-[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_3r67i"]
+[ext_resource type="Script" path="res://Enemy/strongerEnemy.gd" id="1_ys6m4"]
 [ext_resource type="Texture2D" uid="uid://cpe6rcuitiom6" path="res://assets/enemies/Monsters_Creatures_Fantasy/Skeleton/Walk.png" id="2_6sta3"]
 [ext_resource type="PackedScene" uid="uid://btauj1kt2igi1" path="res://Utlity/hurt_box.tscn" id="3_gnwt6"]
 [ext_resource type="PackedScene" uid="uid://ddhpvif8ronsj" path="res://Utlity/hitbox.tscn" id="4_iow4g"]
@@ -182,13 +182,14 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_h3ip2"]
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="StrongerEnemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(1.5, 1.5)
 collision_mask = 0
 motion_mode = 1
-script = ExtResource("1_3r67i")
-hp = 5
-xp_reward = 2
+script = ExtResource("1_ys6m4")
+movement_speed = 25.0
+hp = 15
+xp_reward = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.823529, 0, 0.156863, 1)
