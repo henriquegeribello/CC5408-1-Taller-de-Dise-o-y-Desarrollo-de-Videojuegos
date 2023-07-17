@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bk88s1l2tfeb0"]
+[gd_scene load_steps=17 format=3 uid="uid://bk88s1l2tfeb0"]
 
 [ext_resource type="Texture2D" uid="uid://qehda634lpl4" path="res://dirt_full_new.png" id="1_l10io"]
 [ext_resource type="PackedScene" uid="uid://do8oqsdg258a8" path="res://player.tscn" id="2_nbq3s"]
@@ -9,6 +9,41 @@
 [ext_resource type="PackedScene" uid="uid://1hfpcrrygpk1" path="res://scenes/gameover_menu.tscn" id="5_20jjb"]
 [ext_resource type="PackedScene" uid="uid://bxpviy8dew14x" path="res://scenes/upgrade_menu.tscn" id="6_i0ice"]
 [ext_resource type="PackedScene" uid="uid://di0rg47j7at1p" path="res://Utlity/enemy_spawner.tscn" id="7_gyoow"]
+[ext_resource type="PackedScene" uid="uid://dbsivqsvjeown" path="res://Enemy/enemy.tscn" id="10_74mmy"]
+[ext_resource type="Script" path="res://Utlity/spawn_info.gd" id="11_bup4v"]
+[ext_resource type="PackedScene" uid="uid://4amb0f1o4imo" path="res://Enemy/Ogre.tscn" id="12_p0qwj"]
+
+[sub_resource type="Resource" id="Resource_62koq"]
+script = ExtResource("11_bup4v")
+time_start = 0
+time_end = 20
+enemy = ExtResource("10_74mmy")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_augoa"]
+script = ExtResource("11_bup4v")
+time_start = 0
+time_end = 20
+enemy = ExtResource("12_p0qwj")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_c1kfw"]
+script = ExtResource("11_bup4v")
+time_start = 18
+time_end = 60
+enemy = ExtResource("10_74mmy")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_vg421"]
+script = ExtResource("11_bup4v")
+time_start = 18
+time_end = 60
+enemy = ExtResource("12_p0qwj")
+enemy_num = 2
+enemy_spawn_delay = 1
 
 [node name="World" type="Node2D" groups=["root"]]
 
@@ -64,3 +99,4 @@ size_flags_horizontal = 4
 [node name="Shadow" parent="." instance=ExtResource("4_3alnl")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_gyoow")]
+spawns = Array[ExtResource("11_bup4v")]([SubResource("Resource_62koq"), SubResource("Resource_augoa"), SubResource("Resource_c1kfw"), SubResource("Resource_vg421")])

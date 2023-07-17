@@ -44,7 +44,6 @@ func get_closest_enemy():
 		if position.distance_squared_to(to_local(ray.get_collision_point())) < last_closest_distance and ray.get_collider() is Enemy:
 			last_closest_enemy = ray.get_collider()
 			last_closest_distance = position.distance_squared_to(to_local(ray.get_collision_point()))
-	print(last_closest_enemy)
 	return last_closest_enemy
 
 func check_for_enemies():

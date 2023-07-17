@@ -105,9 +105,7 @@ func _on_hit_box_area_entered(area):
 
 
 func _on_hit_box_body_entered(body):
-	print("body entered")
 	if body.is_in_group("enemy"):
-		print("body is enemy")
 		enemy_hit(1)
 
 

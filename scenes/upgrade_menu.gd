@@ -28,7 +28,6 @@ func _on_level_up():
 	get_tree().paused = true
 
 func _on_upgrade_btn_pressed(attack : String):
-	print("upgrade")
 	player_attack_node.upgrade_attack(attack)
 	
 	hide()
