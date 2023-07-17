@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://4amb0f1o4imo"]
+[gd_scene load_steps=27 format=3 uid="uid://4amb0f1o4imo"]
 
 [ext_resource type="Script" path="res://Enemy/Ogre.gd" id="1_jnfui"]
 [ext_resource type="Texture2D" uid="uid://mdqcieua5lk2" path="res://assets/enemies/Monsters_Creatures_Fantasy/Goblin/Idle.png" id="2_xr833"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btauj1kt2igi1" path="res://Utlity/hurt_box.tscn" id="4_4h6ls"]
 [ext_resource type="Texture2D" uid="uid://co28e3bgmuq1p" path="res://assets/enemies/Monsters_Creatures_Fantasy/Goblin/Run.png" id="5_28rha"]
 [ext_resource type="Texture2D" uid="uid://cqruqpmvxjsj" path="res://assets/enemies/Monsters_Creatures_Fantasy/Goblin/Take Hit.png" id="6_2gg7i"]
+[ext_resource type="Texture2D" uid="uid://unk0l6d4vghg" path="res://assets/enemies/Monsters_Creatures_Fantasy/Goblin/Death.png" id="7_77tr3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qqkxq"]
 radius = 14.0
@@ -180,13 +181,57 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_8xfww"]
+resource_name = "death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_77tr3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r8qpt"]
 _data = {
 "RESET": SubResource("Animation_mmk42"),
+"death": SubResource("Animation_8xfww"),
 "idle": SubResource("Animation_ysv5s"),
 "run": SubResource("Animation_8sivb"),
 "take hit": SubResource("Animation_ixxkh")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kijn6"]
+animation = &"death"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ke3fi"]
 animation = &"run"
@@ -203,13 +248,19 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cahl8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gok3f"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nsyud"]
 states/Start/position = Vector2(202, 100)
+states/death/node = SubResource("AnimationNodeAnimation_kijn6")
+states/death/position = Vector2(524, 204.877)
 states/run/node = SubResource("AnimationNodeAnimation_ke3fi")
 states/run/position = Vector2(461, 107)
 "states/take hit/node" = SubResource("AnimationNodeAnimation_b5mi4")
-"states/take hit/position" = Vector2(466, 196)
-transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_htv32"), "run", "take hit", SubResource("AnimationNodeStateMachineTransition_8tqbh"), "take hit", "run", SubResource("AnimationNodeStateMachineTransition_dkw31")]
+"states/take hit/position" = Vector2(589, 100)
+transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_htv32"), "run", "take hit", SubResource("AnimationNodeStateMachineTransition_8tqbh"), "take hit", "run", SubResource("AnimationNodeStateMachineTransition_dkw31"), "take hit", "death", SubResource("AnimationNodeStateMachineTransition_cahl8"), "run", "death", SubResource("AnimationNodeStateMachineTransition_gok3f")]
 graph_offset = Vector2(0, 69.8772)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_24e8o"]
@@ -257,6 +308,7 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_24e8o")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]
