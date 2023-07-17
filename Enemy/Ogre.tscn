@@ -265,7 +265,7 @@ graph_offset = Vector2(0, 69.8772)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_24e8o"]
 
-[node name="Ogre" type="CharacterBody2D"]
+[node name="Ogre" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_jnfui")
 movement_speed = 52.0
 hp = 1
