@@ -74,13 +74,8 @@ size_flags_vertical = 0
 theme = ExtResource("3_1yoev")
 text = "Start"
 
-[node name="Options" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-theme = ExtResource("3_1yoev")
-text = "Options"
-
 [node name="Credits" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme = ExtResource("3_1yoev")
