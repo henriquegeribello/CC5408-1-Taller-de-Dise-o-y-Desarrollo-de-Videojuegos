@@ -34,8 +34,8 @@ func _ready():
 		
 	
 func _process(delta):
-	#global_position = get_parent().global_position
-	pass
+	if shadow.mov != Vector2.ZERO:
+		shadow_mov = shadow.mov.normalized()
 
 func _physics_process(delta):
 	var space_state = get_world_2d().direct_space_state
@@ -101,16 +101,16 @@ func bullet_init():
 
 func set_target(bullet):
 	match bullet.type:
-		simple:
-			if shadow.mov != Vector2.ZERO:
-				shadow_mov = shadow.mov.normalized()
-			bullet.target_pos = shadow_mov
 		homing:
 			var enm = get_closest_enemy()
 			if enm != null:
 				bullet.enemy_target = enm
 		fixed:
 			bullet.mov = projectile.mov
+		_:
+			if shadow.mov != Vector2.ZERO:
+				shadow_mov = shadow.mov.normalized()
+			bullet.target_pos = shadow_mov
 
 func get_closest_enemy():
 	return enemyDetect.get_closest_enemy()
