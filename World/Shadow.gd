@@ -8,6 +8,7 @@ var mov : Vector2
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var pivot = $pivot
+@onready var attack_node = $Attack
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +18,7 @@ func _ready():
 	if FileAccess.file_exists("res://Shadow/Timelines/last_game_timeline.tres"):
 		timeline = load("res://Shadow/Timelines/last_game_timeline.tres")
 		movementArray = timeline.movement_array
+		attack_node.timeline = timeline
 		
 		$Attack.init_attacks = timeline.init_attacks
 		$Attack.attack_event_timeline = timeline.events
@@ -24,7 +26,8 @@ func _ready():
 		
 		$deathTimer.wait_time = timeline.time_of_death/1000
 		$deathTimer.start()
-		
+	else:
+		queue_free()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

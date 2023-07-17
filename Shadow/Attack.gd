@@ -9,7 +9,7 @@ var projectiles = {
 }
 
 var spawners := {}
-
+var timeline = load("res://Shadow/Timelines/last_game_timeline.tres")
 var init_attacks = []
 var attack_event_timeline = []
 var attack_timestamps = []
@@ -19,7 +19,9 @@ var available_enemies = []
 @onready var eventTimer = %eventTimer
 
 func _ready():
-	var timeline = load("res://Shadow/Timelines/last_game_timeline.tres")
+	if not timeline:
+		return
+	
 	init_attacks = timeline.init_attacks
 	attack_event_timeline = timeline.events
 	attack_timestamps = timeline.timestamps
