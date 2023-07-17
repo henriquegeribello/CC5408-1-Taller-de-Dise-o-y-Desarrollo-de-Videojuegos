@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bk88s1l2tfeb0"]
+[gd_scene load_steps=17 format=3 uid="uid://bk88s1l2tfeb0"]
 
 [ext_resource type="Texture2D" uid="uid://qehda634lpl4" path="res://dirt_full_new.png" id="1_l10io"]
 [ext_resource type="PackedScene" uid="uid://do8oqsdg258a8" path="res://player.tscn" id="2_nbq3s"]
@@ -16,7 +16,7 @@
 [sub_resource type="Resource" id="Resource_62koq"]
 script = ExtResource("11_bup4v")
 time_start = 0
-time_end = 10
+time_end = 20
 enemy = ExtResource("10_74mmy")
 enemy_num = 1
 enemy_spawn_delay = 2
@@ -24,18 +24,26 @@ enemy_spawn_delay = 2
 [sub_resource type="Resource" id="Resource_augoa"]
 script = ExtResource("11_bup4v")
 time_start = 0
-time_end = 10
+time_end = 20
 enemy = ExtResource("12_p0qwj")
 enemy_num = 1
 enemy_spawn_delay = 2
 
 [sub_resource type="Resource" id="Resource_c1kfw"]
 script = ExtResource("11_bup4v")
-time_start = 9
-time_end = 30
+time_start = 18
+time_end = 60
 enemy = ExtResource("10_74mmy")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_vg421"]
+script = ExtResource("11_bup4v")
+time_start = 18
+time_end = 60
+enemy = ExtResource("12_p0qwj")
 enemy_num = 2
-enemy_spawn_delay = 0
+enemy_spawn_delay = 1
 
 [node name="World" type="Node2D" groups=["root"]]
 
@@ -91,4 +99,4 @@ size_flags_horizontal = 4
 [node name="Shadow" parent="." instance=ExtResource("4_3alnl")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("7_gyoow")]
-spawns = Array[ExtResource("11_bup4v")]([SubResource("Resource_62koq"), SubResource("Resource_augoa"), SubResource("Resource_c1kfw")])
+spawns = Array[ExtResource("11_bup4v")]([SubResource("Resource_62koq"), SubResource("Resource_augoa"), SubResource("Resource_c1kfw"), SubResource("Resource_vg421")])

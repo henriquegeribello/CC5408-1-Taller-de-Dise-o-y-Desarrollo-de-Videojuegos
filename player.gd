@@ -13,7 +13,7 @@ var lvlup_exp = 10
 var curr_exp = 0
 
 var init_attacks = ["ice_spear", "lightning_bird", "iron_slash"]
-var enemies_to_defeat = 50
+var enemies_to_defeat = 500
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
