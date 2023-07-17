@@ -7,9 +7,11 @@ var max_hp = hp
 
 func _on_hurt_box_hurt(damage):
 	hp -= damage
+	playback.travel("take hit")
 	if hp <= 0:
 		player.add_xp()
-		queue_free()
+		playback.travel("death")
+		
 	elif hp == max_hp/2:
 		movement_speed = 2*movement_speed
 		var nn = mushSelf.instantiate()

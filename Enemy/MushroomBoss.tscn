@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://qu6f7sjtcchk"]
+[gd_scene load_steps=30 format=3 uid="uid://qu6f7sjtcchk"]
 
 [ext_resource type="Script" path="res://Enemy/MushroomBoss.gd" id="1_414td"]
 [ext_resource type="PackedScene" uid="uid://btauj1kt2igi1" path="res://Utlity/hurt_box.tscn" id="3_vaooa"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://fnr7pgw6rdkj" path="res://assets/enemies/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="5_4nbdj"]
 [ext_resource type="Texture2D" uid="uid://cexjpu8rxvpe1" path="res://assets/enemies/Monsters_Creatures_Fantasy/Mushroom/Idle.png" id="5_ty7tp"]
 [ext_resource type="Texture2D" uid="uid://c8q4xgkqx3v6k" path="res://assets/enemies/Monsters_Creatures_Fantasy/Mushroom/Run.png" id="6_oo3g1"]
+[ext_resource type="Texture2D" uid="uid://bo2851jym2a1" path="res://assets/enemies/Monsters_Creatures_Fantasy/Mushroom/Take Hit.png" id="7_ef52h"]
+[ext_resource type="Texture2D" uid="uid://r5i1gam7xgt5" path="res://assets/enemies/Monsters_Creatures_Fantasy/Mushroom/Death.png" id="8_hn0eh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ynnxi"]
 radius = 18.6667
@@ -152,15 +154,103 @@ tracks/3/keys = {
 "values": [Color(0.419608, 0.117647, 0.0980392, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_4sgnb"]
+resource_name = "take hit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_ef52h")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_8mprj"]
+resource_name = "death"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_hn0eh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_217r3"]
 _data = {
 "RESET": SubResource("Animation_6n76r"),
 "attack": SubResource("Animation_hhm6a"),
+"death": SubResource("Animation_8mprj"),
+"take hit": SubResource("Animation_4sgnb"),
 "walk": SubResource("Animation_ice2l")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_atxsh"]
 animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mhmoa"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lkh4g"]
+animation = &"take hit"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ttpi3"]
 animation = &"walk"
@@ -173,14 +263,26 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sp3oi"]
 switch_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ia8hr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nvq8q"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xmtpy"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tl2p4"]
 states/Start/position = Vector2(137.333, 69.3333)
 states/attack/node = SubResource("AnimationNodeAnimation_atxsh")
 states/attack/position = Vector2(556, 60.2222)
+states/death/node = SubResource("AnimationNodeAnimation_mhmoa")
+states/death/position = Vector2(390, 246.281)
+"states/take hit/node" = SubResource("AnimationNodeAnimation_lkh4g")
+"states/take hit/position" = Vector2(375, 163)
 states/walk/node = SubResource("AnimationNodeAnimation_ttpi3")
-states/walk/position = Vector2(375, 60.2222)
-transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_e8ptn"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_pnvt3"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_sp3oi")]
-graph_offset = Vector2(-202, 0)
+states/walk/position = Vector2(383, 60.2222)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_e8ptn"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_pnvt3"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_sp3oi"), "walk", "take hit", SubResource("AnimationNodeStateMachineTransition_ia8hr"), "take hit", "walk", SubResource("AnimationNodeStateMachineTransition_nvq8q"), "take hit", "death", SubResource("AnimationNodeStateMachineTransition_xmtpy")]
+graph_offset = Vector2(-202, 125.281)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_h3ip2"]
 
@@ -191,7 +293,7 @@ collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_414td")
 movement_speed = 25.0
-hp = 100
+hp = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.419608, 0.117647, 0.0980392, 1)
@@ -233,6 +335,7 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_h3ip2")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

@@ -272,9 +272,8 @@ hp = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 1)
-texture = ExtResource("5_28rha")
-hframes = 8
-frame = 4
+texture = ExtResource("2_xr833")
+hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 9)
