@@ -238,7 +238,6 @@ texture = ExtResource("2_urc7j")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(6, 0)
 shape = SubResource("CapsuleShape2D_ynnxi")
 
