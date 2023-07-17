@@ -9,11 +9,11 @@ var time = 0
 
 var start_time_ms : int
 
-var lvlup_exp = 10
+var lvlup_exp = 15
 var curr_exp = 0
 
 var init_attacks = ["ice_spear", "lightning_bird", "iron_slash"]
-var enemies_to_defeat = 500
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -34,7 +34,7 @@ func _ready():
 	_on_hurt_box_hurt(0)
 	$Attack.init_attacks = init_attacks
 	#connect("show_menu",Callable(gom, "show_menu"))
-	deadEnemiesCounter.text = "0/"+str(enemies_to_defeat)
+	deadEnemiesCounter.text = "0"
 @onready var pivot = $Pivot
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
@@ -96,6 +96,8 @@ func _on_hurt_box_hurt(damage):
 
 func change_time(argtime = 0):
 	time = argtime
+	if argtime > 169:
+		wm.show_menu()
 	var minutes = int(time/60)
 	var seconds = time % 60
 	if minutes < 10 :
@@ -103,6 +105,7 @@ func change_time(argtime = 0):
 	if seconds < 10:
 		seconds = str(0,seconds)
 	lbl_timer.text = str(minutes,":",seconds)
+
 	
 func save_run():
 	shdwtimeline.movement_array = movement_array
@@ -111,9 +114,7 @@ func save_run():
 	ResourceSaver.save(shdwtimeline, "res://Shadow/Timelines/last_game_timeline.tres")
 
 func change_deadEnemiesCounter(numberOfDeadEnemies):
-	deadEnemiesCounter.text = str(numberOfDeadEnemies)+"/"+str(enemies_to_defeat)
-	if numberOfDeadEnemies >= enemies_to_defeat:
-		wm.show_menu()
+	deadEnemiesCounter.text = str(numberOfDeadEnemies)
 
 func add_xp(xp = 1):
 	curr_exp += xp

@@ -187,7 +187,7 @@ scale = Vector2(1.5, 1.5)
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_3r67i")
-hp = 15
+hp = 5
 xp_reward = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

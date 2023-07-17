@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://ciypp25t8wlgq"]
 
-[ext_resource type="Script" path="res://Enemy/Ogre.gd" id="1_lxqwo"]
+[ext_resource type="Script" path="res://Enemy/StrongerOgre.gd" id="1_s3fxi"]
 [ext_resource type="Texture2D" uid="uid://mdqcieua5lk2" path="res://assets/enemies/Monsters_Creatures_Fantasy/Goblin/Idle.png" id="2_qg5ty"]
 [ext_resource type="PackedScene" uid="uid://btauj1kt2igi1" path="res://Utlity/hurt_box.tscn" id="3_qvphy"]
 [ext_resource type="PackedScene" uid="uid://ddhpvif8ronsj" path="res://Utlity/hitbox.tscn" id="4_ynjsm"]
@@ -170,10 +170,10 @@ transitions = ["Start", "run", SubResource("AnimationNodeStateMachineTransition_
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_24e8o"]
 
-[node name="Ogre" type="CharacterBody2D"]
-script = ExtResource("1_lxqwo")
-movement_speed = 45.0
-hp = 5
+[node name="StrongerOgre" type="CharacterBody2D"]
+script = ExtResource("1_s3fxi")
+movement_speed = 62.0
+hp = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.823529, 0, 0.156863, 1)
