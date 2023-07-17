@@ -3,7 +3,7 @@ class_name Enemy
 
 @export var movement_speed = 30.0
 
-@export var hp := 1
+@export var hp := 3
 @export var xp_reward := 1
 
 @onready var player = get_tree().get_first_node_in_group("player") 
