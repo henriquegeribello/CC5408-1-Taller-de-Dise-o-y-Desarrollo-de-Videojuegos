@@ -6,9 +6,9 @@
 
 [resource]
 script = ExtResource("1_do1bh")
-max_level = 3
+max_level = 5
 base_ammo = 1
-reload_speed = 2.0
+reload_speed = 1.5
 fire_rate = 1.0
 level = 1
 element = 2
@@ -18,7 +18,7 @@ hp = 1
 speed = 120
 knockback = 100
 attack_size = 1.0
-damage = 2
+damage = 1
 flight_time = 10.0
 collision = "res://Attacks/Collisions/capsule_collision.tres"
 collision_rot = -1.5708

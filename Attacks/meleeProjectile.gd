@@ -23,7 +23,10 @@ func _ready():
 	frame_speed = hframes/flight_time
 
 func _physics_process(delta):
-	position = attacker.global_position + target_pos.normalized()*40
+	if is_instance_valid(attacker):
+		position = attacker.global_position + target_pos.normalized()*40
+	else:
+		queue_free()
 
 func enemy_hit(charge = 1):
 	hp -= charge

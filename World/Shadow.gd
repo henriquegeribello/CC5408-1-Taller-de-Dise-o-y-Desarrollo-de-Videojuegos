@@ -25,7 +25,6 @@ func _ready():
 		$deathTimer.wait_time = timeline.time_of_death/1000
 		$deathTimer.start()
 		
-		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

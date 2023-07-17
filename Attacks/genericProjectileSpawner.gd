@@ -28,8 +28,8 @@ func _ready():
 	attackTimer.start()
 	
 func _process(delta):
-	#global_position = get_parent().global_position
-	pass
+	if player.velocity != Vector2.ZERO:
+		player_mov = player.velocity.normalized()
 
 
 func _on_attack_timer_timeout():
