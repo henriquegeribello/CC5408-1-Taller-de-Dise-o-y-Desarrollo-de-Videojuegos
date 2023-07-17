@@ -50,10 +50,7 @@ func _physics_process(delta):
 		if result:
 			if (global_position.distance_squared_to(result["position"]) < global_position.distance_squared_to(closest_col)):
 				if result.collider.is_in_group("Enemy"):
-					print(result)
 					closest_enemy = result.collider
-					print(closest_enemy)
-	
 
 func _on_attack_timer_timeout():
 	if ammo > 0:
@@ -118,3 +115,9 @@ func set_target(bullet):
 func get_closest_enemy():
 	return enemyDetect.get_closest_enemy()
 
+func upgrade_attack():
+	if level == projectile.max_level:
+		return -1
+	projectile = projectile.nextlvl
+	level += 1
+	return 1

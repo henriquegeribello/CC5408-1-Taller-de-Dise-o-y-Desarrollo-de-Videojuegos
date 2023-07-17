@@ -103,5 +103,6 @@ func upgrade_attack():
 	if level == projectile.max_level:
 		return -1
 	projectile = projectile.nextlvl
+	print("Upgraded")
 	level += 1
 	return 1

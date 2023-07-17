@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=3 format=3 uid="uid://b41mpr38s6w1l"]
+
+[ext_resource type="Script" path="res://Attacks/Projectiles/Projectile.gd" id="1_lwavv"]
+[ext_resource type="Texture2D" uid="uid://tpnln4olmkrh" path="res://assets/attacks/Holy VFX 01 Repeatable.png" id="2_3tj5g"]
+
+[resource]
+script = ExtResource("1_lwavv")
+max_level = 3
+base_ammo = 2
+reload_speed = 1.0
+fire_rate = 1.0
+level = 1
+element = 2
+type = 1
+mov = Vector2(0, 0)
+hp = 1
+speed = 120
+knockback = 100
+attack_size = 1.0
+damage = 5
+flight_time = 10.0
+collision = "res://Attacks/Collisions/capsule_collision.tres"
+collision_rot = -1.5708
+collision_shift = Vector2(0, 0)
+shift = Vector2(0, 1)
+sprite = ExtResource("2_3tj5g")
+hframes = 8
+vframes = 1
+rotation = 0
+name = "Lightning Bird"
+description = ""
+upgrade_desc = "lvl : 3
+final form
+"
