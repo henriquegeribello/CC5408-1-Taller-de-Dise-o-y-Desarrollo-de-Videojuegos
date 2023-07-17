@@ -72,6 +72,7 @@ func movement():
 	velocity = mov.normalized()*movement_speed
 
 	if mov:
+		
 		playback.travel("run")
 		if mov.x:
 			pivot.scale.x = sign(mov.x)	
@@ -81,14 +82,15 @@ func movement():
 
 
 func _on_hurt_box_hurt(damage):
+	playback.travel("take damage")
 	hp -= damage 
 	healthBar.max_value = max_hp
 	healthBar.value = hp
+	
 	if hp <= 0:
 		#emit_signal("show_menu")
 		save_run()
 		gom.show_menu()
-	print(hp)
 
 		
 

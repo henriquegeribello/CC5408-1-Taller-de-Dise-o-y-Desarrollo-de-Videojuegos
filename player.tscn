@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://do8oqsdg258a8"]
+[gd_scene load_steps=27 format=3 uid="uid://do8oqsdg258a8"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_l2r0f"]
 [ext_resource type="Texture2D" uid="uid://b4ot088uxdr51" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_idle.png" id="2_e4qfw"]
 [ext_resource type="PackedScene" uid="uid://btauj1kt2igi1" path="res://Utlity/hurt_box.tscn" id="3_dm30n"]
 [ext_resource type="Texture2D" uid="uid://c0bkcqit4vp1v" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_run.png" id="3_y57ky"]
+[ext_resource type="Texture2D" uid="uid://bnqdrv5g8e7kj" path="res://assets/characters/Blue Witch/Blue_witch/B_witch_take_damage.png" id="4_q13wc"]
 [ext_resource type="PackedScene" uid="uid://cgri5p7bxsnws" path="res://Attacks/Attack.tscn" id="4_xpiue"]
 [ext_resource type="Theme" uid="uid://ckh4u1b00d2m8" path="res://Utlity/theme.tres" id="5_su7wy"]
 [ext_resource type="Theme" uid="uid://cup2t4417g3ys" path="res://resources/menus.tres" id="6_c71uy"]
@@ -134,11 +135,53 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_l7q5v"]
+resource_name = "take damage"
+length = 0.6
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_q13wc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r723w"]
 _data = {
 "RESET": SubResource("Animation_moqdt"),
 "idle": SubResource("Animation_duk4l"),
-"run": SubResource("Animation_62fjl")
+"run": SubResource("Animation_62fjl"),
+"take damage": SubResource("Animation_l7q5v")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cxw08"]
@@ -161,6 +204,7 @@ states/idle/position = Vector2(355, 100)
 states/run/node = SubResource("AnimationNodeAnimation_k3soo")
 states/run/position = Vector2(537, 100)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_vfxbc"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_7m0jn"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_pay5t")]
+graph_offset = Vector2(0, 25.7544)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_vyh4r"]
 
