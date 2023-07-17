@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_do1bh")
-max_level = 3
+max_level = 5
 base_ammo = 1
 reload_speed = 2.0
 fire_rate = 1.0
