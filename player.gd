@@ -112,7 +112,7 @@ func save_run():
 	shdwtimeline.movement_array = movement_array
 	shdwtimeline.init_attacks = ["res://Attacks/Projectiles/iceSpear.tres", "res://Attacks/Projectiles/ironSlash.tres", "res://Attacks/Projectiles/lightningBird.tres"]
 	shdwtimeline.time_of_death = Time.get_ticks_msec() - start_time_ms
-	ResourceSaver.save(shdwtimeline, "res://Shadow/Timelines/last_game_timeline.tres")
+	ResourceSaver.save(shdwtimeline, "user://last_game_timeline.tres")
 
 func change_deadEnemiesCounter(numberOfDeadEnemies):
 	deadEnemiesCounter.text = str(numberOfDeadEnemies)

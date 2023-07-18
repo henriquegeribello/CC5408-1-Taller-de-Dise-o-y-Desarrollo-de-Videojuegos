@@ -9,7 +9,7 @@ var projectiles = {
 }
 
 var spawners := {}
-var timeline = load("res://Shadow/Timelines/last_game_timeline.tres")
+var timeline = load("user://last_game_timeline.tres")
 var init_attacks = []
 var attack_event_timeline = []
 var attack_timestamps = []

@@ -15,8 +15,8 @@ func _ready():
 	for i in range(50):
 		movementArray.append(Vector2(0, 0))
 		
-	if FileAccess.file_exists("res://Shadow/Timelines/last_game_timeline.tres"):
-		timeline = load("res://Shadow/Timelines/last_game_timeline.tres")
+	if FileAccess.file_exists("user://last_game_timeline.tres"):
+		timeline = ResourceLoader.load("user://last_game_timeline.tres")
 		movementArray = timeline.movement_array
 		attack_node.timeline = timeline
 		
