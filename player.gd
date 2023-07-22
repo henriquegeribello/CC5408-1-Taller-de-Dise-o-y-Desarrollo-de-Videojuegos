@@ -15,13 +15,15 @@ var level = 0
 
 var init_attacks = ["ice_spear", "lightning_bird", "iron_slash"]
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 @onready var shdwtimeline := ShadowTimeline.new()
+@onready var prevshdwtimeline : ShadowTimeline = null
 
 @onready var shadw = get_tree().get_first_node_in_group("Shadow")
 @onready var healthBar = get_node("%HealthBar")
@@ -36,6 +38,8 @@ func _ready():
 	$Attack.init_attacks = init_attacks
 	#connect("show_menu",Callable(gom, "show_menu"))
 	deadEnemiesCounter.text = "0"
+	prevshdwtimeline = ResourceLoader.load("user://last_game_timeline.tres")
+	
 @onready var pivot = $Pivot
 @onready var animation_player = $AnimationPlayer
 @onready var animation_tree = $AnimationTree
@@ -113,6 +117,8 @@ func save_run():
 	shdwtimeline.init_attacks = ["res://Attacks/Projectiles/iceSpear.tres", "res://Attacks/Projectiles/ironSlash.tres", "res://Attacks/Projectiles/lightningBird.tres"]
 	shdwtimeline.time_of_death = Time.get_ticks_msec() - start_time_ms
 	ResourceSaver.save(shdwtimeline, "user://last_game_timeline.tres")
+	prevshdwtimeline = shdwtimeline
+	shdwtimeline = ShadowTimeline.new()
 
 func change_deadEnemiesCounter(numberOfDeadEnemies):
 	deadEnemiesCounter.text = str(numberOfDeadEnemies)
